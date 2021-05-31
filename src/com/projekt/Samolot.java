@@ -1,0 +1,9 @@
+package com.projekt;
+
+public class Samolot
+{
+    private String model;
+    private String id;
+
+    public Samolot(String id, String model) { this.id = id; this.model = model; }
+}
