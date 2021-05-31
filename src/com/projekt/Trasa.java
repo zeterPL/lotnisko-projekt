@@ -9,6 +9,9 @@ public class Trasa
     private void setDlugosc()
     {
         //TODO wyliczenie i ustawienie dlugosci
+
+        //tymczasowo
+        this.dlugosc = 10000;
     }
 
     public Trasa(Lotnisko baza, Lotnisko cel)
@@ -17,5 +20,10 @@ public class Trasa
         this.cel = cel;
 
         this.setDlugosc();
+    }
+
+    public String toString()
+    {
+        return "Trasa: " + baza.toSting() + " do " + cel.toSting() + " " + "Dlugosc: " + dlugosc;
     }
 }

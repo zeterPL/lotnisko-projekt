@@ -18,4 +18,9 @@ public class Lotnisko
         this.kraj = kraj;
         this.miasto = miasto;
     }
+
+    public String toSting()
+    {
+        return "Lotnisko " + miasto + " " + kraj;
+    }
 }

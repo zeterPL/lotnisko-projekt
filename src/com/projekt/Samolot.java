@@ -6,4 +6,9 @@ public class Samolot
     private String id;
 
     public Samolot(String id, String model) { this.id = id; this.model = model; }
+
+    public String toString()
+    {
+        return "Samolot: " + model + " " + " ID: " + id;
+    }
 }

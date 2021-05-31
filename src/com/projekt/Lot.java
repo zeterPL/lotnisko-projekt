@@ -33,4 +33,14 @@ public class Lot
     public void setSamolot(Samolot samolot) {
         this.samolot = samolot;
     }
+
+    public void setTrasa(Trasa trasa) {
+        this.trasa = trasa;
+    }
+
+    public String toString()
+    {
+        return trasa.toString() + " " + samolot.toString();
+
+    }
 }
