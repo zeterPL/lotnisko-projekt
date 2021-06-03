@@ -69,7 +69,7 @@ public class Main {
                     int w;
                     do
                     {
-                        System.out.println("W bazie jest " + samoloty.size() + " samolotow");
+                        System.out.println("Smolotow w bazie: " + samoloty.size());
                         System.out.println("1. Dodaj samolot");
                         System.out.println("2. Usun samolot");
                         System.out.println("3. Wyswietl liste samolotow");
@@ -81,27 +81,29 @@ public class Main {
                         {
                             case 1:
 
-                                String model;
-                                String id;
+                                String model = "";
+                                String id = "";
                                 String typ;
 
 
-                                System.out.println("Podaj model: ");
-                                model = scanner.nextLine();
+                               while(model.equals(""))
+                               {
+                                    System.out.print("Podaj model: ");
+                                    model = scanner.next();
+                               }
 
+                               do
+                               {
+                                   System.out.print("Podaj id: ");
+                                   id = scanner.next();
 
-                                //do
-                             //   {
-                                    System.out.println("Podaj id: ");
-                                    id = scanner.nextLine();
-
-                              //  }while (idCheck(id, samoloty));
+                               }while (idCheck(id, samoloty));
 
 
                                 do
                                 {
-                                    System.out.println("Podaj typ (TypA, TypB, TypC, TypD): ");
-                                    typ = scanner.nextLine();
+                                    System.out.print("Podaj typ (TypA, TypB, TypC, TypD): ");
+                                    typ = scanner.next();
 
                                     if(typ.equals("TypA") || typ.equals("TypB") || typ.equals("TypC") || typ.equals("TypD"))
                                         break;
@@ -116,6 +118,14 @@ public class Main {
                                 break;
 
                             case 2:
+                                //String toRemove;
+                                System.out.print("Podaj Id samolotu do usuniecia: ");
+                                String toRemove = scanner.next();
+                                for(int i=0;i< samoloty.size();i++){
+                                    if(samoloty.get(i).getId().equals(toRemove)){
+                                        samoloty.remove(samoloty.get(i));
+                                    }
+                                }
                                 break;
 
                             case 3:
