@@ -1,13 +1,19 @@
 package com.projekt;
 
-import org.ietf.jgss.GSSName;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
+    /*
+    OPCJA1
+    OPCJA2  ZROBIONE
+    OPCJA3
+    OPCJA3
+    OPCJA5
+     */
+
 
     //maksymalna liczba opcji programu
     public static int liczbaOpcji = 6;
@@ -140,9 +146,33 @@ public class Main {
                     }while (w!=4);
                     break;
                 case 3:
-                    //
+                    int w1;
+
+                    do
+                    {
+                        System.out.println("Dostepnych tras: " + trasy.size());
+                        System.out.println("Lotniska w bazie: " + lotniska.size());
+                        System.out.println("1. Dodaj nowa trase");
+                        System.out.println("2. Dodaj nowe lotnisko");
+                        System.out.println("3. Dodaj lotnisko do trasy");
+                        System.out.println("4. Wyswietl wszystkie trasy");
+                        System.out.println("5. Wyswietl wszystkie lotniska");
+                        System.out.println("6. Wstecz");
+                        System.out.println("Opcja: ");
+                        w1 = scanner.nextInt();
+
+                    }while (w1!=6);
+
                     break;
                 case 4:
+                    //
+                    break;
+
+                case 5:
+                    //zapis danych do pliku tekstowego w taki sposób zeby było potem można łatwo wczytac dane do programu
+                    break;
+
+                case 6:
                     //
                     break;
             }
