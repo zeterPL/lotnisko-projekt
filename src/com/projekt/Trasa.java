@@ -24,6 +24,6 @@ public class Trasa
 
     public String toString()
     {
-        return "Trasa: " + baza.toSting() + " do " + cel.toSting() + " " + "Dlugosc: " + dlugosc;
+        return "Trasa: " + baza.toString() + " do " + cel.toString() + " " + "Dlugosc: " + dlugosc;
     }
 }

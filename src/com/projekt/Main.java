@@ -9,7 +9,7 @@ public class Main {
     /*
     OPCJA1
     OPCJA2  ZROBIONE
-    OPCJA3
+    OPCJA3  ZROBIONE
     OPCJA3
     OPCJA5
      */
@@ -66,8 +66,16 @@ public class Main {
             {
                 case 1:
 
-                    Lot lot;
-                    Klient klient;
+                    int w2;
+                    System.out.println("1. Wyswietl klientow");
+                    System.out.println("2. Wyswietl dostepne loty");
+                    System.out.println("3. Dodaj klienta");
+                    System.out.println("4. Rezerwuj lot");
+                    System.out.println("5. Wstecz");
+                    System.out.println("Opcja: ");
+
+                    w2 = scanner.nextInt();
+
                     //
                     break;
                 case 2:
@@ -145,6 +153,7 @@ public class Main {
 
                     }while (w!=4);
                     break;
+
                 case 3:
                     int w1;
 
@@ -154,14 +163,61 @@ public class Main {
                         System.out.println("Lotniska w bazie: " + lotniska.size());
                         System.out.println("1. Dodaj nowa trase");
                         System.out.println("2. Dodaj nowe lotnisko");
-                        System.out.println("3. Dodaj lotnisko do trasy");
-                        System.out.println("4. Wyswietl wszystkie trasy");
-                        System.out.println("5. Wyswietl wszystkie lotniska");
-                        System.out.println("6. Wstecz");
+                        System.out.println("3. Wyswietl wszystkie trasy");
+                        System.out.println("4. Wyswietl wszystkie lotniska");
+                        System.out.println("5. Wstecz");
                         System.out.println("Opcja: ");
                         w1 = scanner.nextInt();
 
-                    }while (w1!=6);
+                        switch (w1)
+                        {
+                            case 1:
+                                System.out.print("Wybierz nr lotniska wylotu: ");
+                                int wylot = scanner.nextInt();
+                                System.out.print("Wybierz nr lotniska przylotu: ");
+                                int cel = scanner.nextInt();
+
+                                if(wylot > lotniska.size() || cel > lotniska.size())
+                                {
+                                    System.out.println("\nBład indexu! Sprobuj ponownie.\n");
+                                }
+                                else
+                                {
+                                    trasy.add(new Trasa(lotniska.get(wylot-1),lotniska.get(cel-1)));
+                                    break;
+                                }
+                                break;
+                            case 2:
+                                System.out.print("Podaj kraj: ");
+                                String kraj = scanner.next();
+                                System.out.print("Podaj miasto: ");
+                                String miasto = scanner.next();
+
+                                lotniska.add(new Lotnisko(kraj,miasto));
+
+                                break;
+                            case 3:
+
+                                for (int i=0; i< trasy.size();i++)
+                                {
+                                    System.out.println(i+1 + ". " + trasy.get(i).toString());
+                                }
+
+                                break;
+                            case 4:
+
+                                for (int i=0; i< lotniska.size();i++)
+                                {
+                                    System.out.println(i+1 + ". " + lotniska.get(i).toString());
+                                }
+
+                                break;
+                            case 5:
+                                break;
+
+                        }
+
+                    }while (w1!=5);
 
                     break;
                 case 4:
@@ -169,7 +225,19 @@ public class Main {
                     break;
 
                 case 5:
-                    //zapis danych do pliku tekstowego w taki sposób zeby było potem można łatwo wczytac dane do programu
+                    //zapis danych do pliku tekstowego w taki sposób
+                    //zeby było potem można łatwo wczytac dane do programu
+
+                    /*
+                    loty
+                    trasy
+                    klienci
+                    rezerwacje
+                    samoloty
+                    lotniska
+
+                     */
+
                     break;
 
                 case 6:
