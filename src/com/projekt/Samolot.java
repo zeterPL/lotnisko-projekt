@@ -7,6 +7,10 @@ public class Samolot
 
     public Samolot(String id, String model) { this.id = id; this.model = model; }
 
+    public String getId() {
+        return id;
+    }
+
     public String toString()
     {
         return "Samolot: " + model + " " + " ID: " + id;
