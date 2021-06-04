@@ -12,4 +12,9 @@ public class Klient
     public void addRezerwacja(Rezerwacja rezerwacja) { rezerwacje.add(rezerwacja); }
     public List<Rezerwacja> getRezerwacje() { return rezerwacje; }
 
+    public String toString()
+    {
+        return "";
+    }
+
 }

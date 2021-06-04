@@ -10,4 +10,10 @@ public class Osoba extends Klient
         this.imie = imie;
         this.nazwisko = nazwisko;
     }
+
+    @Override
+    public String toString()
+    {
+        return imie + " " + nazwisko + " liczba rezerwacji: " + getRezerwacje().size();
+    }
 }

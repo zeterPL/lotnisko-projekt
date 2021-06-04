@@ -7,4 +7,9 @@ public class Posrednik extends Klient
     public Posrednik(String nazwa) {
         this.nazwa = nazwa;
     }
+
+    @Override
+    public String toString() {
+        return "Firma " + nazwa + " liczba rezerwacji: " + getRezerwacje().size();
+    }
 }

@@ -19,19 +19,17 @@ public class Main {
     public static int liczbaOpcji = 6;
 
     //czy byl juz samolot z takim samym id
-    public static boolean idCheck(String id, List<Samolot> samoloty)
-    {
-        for(int i=0;i<samoloty.size();i++)
-        {
-            if(samoloty.get(i).getId().equals(id)) return true;
+    public static boolean idCheck(String id, List<Samolot> samoloty) {
+        for (int i = 0; i < samoloty.size(); i++) {
+            if (samoloty.get(i).getId().equals(id)) return true;
         }
         return false;
     }
 
-    public static void drawMenu()
-    {
+    //wypisuje główne menu
+    public static void drawMenu() {
         System.out.println("Wybierz opcje:");
-        System.out.println("1. Zarezerwuj Lot");
+        System.out.println("1. Zarzadzaj rezerwacjami");
         System.out.println("2. Zarzadzaj samolotami");
         System.out.println("3. Zarzadzaj trasami");
         System.out.println("4. Generuj lot na wybranej trasie");
@@ -40,49 +38,134 @@ public class Main {
     }
 
 
-    public static void main(String[] args)
-    {
-	    List<Trasa> trasy = new LinkedList<>();
-	    List<Lotnisko> lotniska = new LinkedList<>();
+    public static void main(String[] args) {
+        List<Trasa> trasy = new LinkedList<>();
+        List<Lotnisko> lotniska = new LinkedList<>();
 
-	    List<Samolot> samoloty = new LinkedList<>();
-	    List<Klient> klienci = new LinkedList<>();
+        List<Samolot> samoloty = new LinkedList<>();
+        List<Klient> klienci = new LinkedList<>();
 
         List<Lot> loty = new LinkedList<>();
-
 
 
         //numer wybranej opcji
         int e;
 
-	    do
-	    {
-	        drawMenu();
-	        System.out.println("Opcja: ");
+        //petla główna
+        do {
+            System.out.println("\n-------------------------------------");
+            System.out.println("AKTUALNY STAN SYSTEMU");
+            System.out.println("Liczba klientow: " + klienci.size());
+            System.out.println("Liczba samolotow: " + samoloty.size());
+            System.out.println("Liczba lotnisk: " + lotniska.size());
+            System.out.println("Liczba tras: " + trasy.size());
+            System.out.println("Liczba dostepnych lotow: " + loty.size());
+            System.out.println("-------------------------------------\n");
+            drawMenu();
+            System.out.println("Opcja: ");
             Scanner scanner = new Scanner(System.in);
             e = scanner.nextInt();
 
-            switch (e)
-            {
+            switch (e) {
                 case 1:
 
                     int w2;
-                    System.out.println("1. Wyswietl klientow");
-                    System.out.println("2. Wyswietl dostepne loty");
-                    System.out.println("3. Dodaj klienta");
-                    System.out.println("4. Rezerwuj lot");
-                    System.out.println("5. Wstecz");
-                    System.out.println("Opcja: ");
+                    do {
+                        System.out.println("Liczba klientow: " + klienci.size());
+                        System.out.println("Liczba dostepnych lotow: " + loty.size());
+                        System.out.println("1. Wyswietl klientow"); //zrobione
+                        System.out.println("2. Wyswietl dostepne loty"); //zrobione
+                        System.out.println("3. Dodaj klienta"); //zrobione
+                        System.out.println("4. Rezerwuj lot"); //TODO rezerwacja
+                        System.out.println("5. Wstecz");
+                        System.out.println("Opcja: ");
 
-                    w2 = scanner.nextInt();
+                        w2 = scanner.nextInt();
 
-                    //
+                        switch (w2) {
+                            case 1:
+                                for (int i = 0; i < klienci.size(); i++) {
+                                    System.out.println(i + 1 + ". " + klienci.get(i).toString());
+                                }
+                                break;
+
+                            case 2:
+                                for (int i = 0; i < loty.size(); i++) {
+                                    System.out.println(i + 1 + ". " + loty.get(i).toString());
+                                }
+                                break;
+
+                            case 3:
+                                int w3;
+                                do {
+                                    System.out.println("1. Firma");
+                                    System.out.println("2. Osoba prywatna");
+                                    System.out.println("3. Wstecz");
+                                    System.out.println("Opcja: ");
+                                    w3 = scanner.nextInt();
+
+
+                                    if (w3 == 1) {
+                                        int w4;
+                                        do {
+                                            System.out.println("1. Posrednik");
+                                            System.out.println("2. Korporacja");
+                                            System.out.print("Opcja: ");
+                                            w4 = scanner.nextInt();
+                                        } while (w4 != 1 && w4 != 2);
+
+                                        System.out.print("Nazwa: ");
+                                        String nazwa = scanner.next();
+
+                                        if (w4 == 1) {
+                                            klienci.add(new Posrednik(nazwa));
+                                        }
+                                        if (w4 == 2) {
+                                            klienci.add(new Korpo(nazwa));
+                                        }
+                                    } else if (w3 == 2) {
+                                        int w4;
+                                        do {
+                                            System.out.println("1. Zwykla osoba");
+                                            System.out.println("2. VIP");
+                                            System.out.print("Opcja: ");
+                                            w4 = scanner.nextInt();
+                                        } while (w4 != 1 && w4 != 2);
+
+                                        System.out.print("Imie: ");
+                                        String imie = scanner.next();
+
+                                        System.out.print("Nazwisko: ");
+                                        String nazwisko = scanner.next();
+
+                                        if (w4 == 1) {
+                                            klienci.add(new Osoba(imie, nazwisko));
+                                        }
+                                        if (w4 == 2) {
+                                            klienci.add(new OsobaVip(imie, nazwisko));
+                                        }
+
+                                    } else if (w3 == 3) break;
+
+                                } while (w3 != 3);
+                                break;
+
+                            case 4:
+                                break;
+
+                            case 5:
+                                break;
+
+
+                        }
+
+
+                    } while (w2 != 5);
                     break;
                 case 2:
 
                     int w;
-                    do
-                    {
+                    do {
                         System.out.println("Smolotow w bazie: " + samoloty.size());
                         System.out.println("1. Dodaj samolot");
                         System.out.println("2. Usun samolot");
@@ -91,8 +174,7 @@ public class Main {
                         System.out.println("Opcja: ");
                         w = scanner.nextInt();
 
-                        switch (w)
-                        {
+                        switch (w) {
                             case 1:
 
                                 String model = "";
@@ -100,34 +182,39 @@ public class Main {
                                 String typ;
 
 
-                               while(model.equals(""))
-                               {
+                                while (model.equals("")) {
                                     System.out.print("Podaj model: ");
                                     model = scanner.next();
-                               }
+                                }
 
-                               do
-                               {
-                                   System.out.print("Podaj id: ");
-                                   id = scanner.next();
+                                do {
+                                    System.out.print("Podaj id: ");
+                                    id = scanner.next();
 
-                               }while (idCheck(id, samoloty));
+                                } while (idCheck(id, samoloty));
 
 
-                                do
-                                {
+                                do {
                                     System.out.print("Podaj typ (TypA, TypB, TypC, TypD): ");
                                     typ = scanner.next();
 
-                                    if(typ.equals("TypA") || typ.equals("TypB") || typ.equals("TypC") || typ.equals("TypD"))
+                                    if (typ.equals("TypA") || typ.equals("TypB") || typ.equals("TypC") || typ.equals("TypD"))
                                         break;
 
-                                }while (true);
+                                } while (true);
 
-                                if(typ.equals("TypA")) { samoloty.add(new TypA(id,model)); }
-                                if(typ.equals("TypB")) { samoloty.add(new TypB(id,model)); }
-                                if(typ.equals("TypC")) { samoloty.add(new TypC(id,model)); }
-                                if(typ.equals("TypD")) { samoloty.add(new TypD(id,model)); }
+                                if (typ.equals("TypA")) {
+                                    samoloty.add(new TypA(id, model));
+                                }
+                                if (typ.equals("TypB")) {
+                                    samoloty.add(new TypB(id, model));
+                                }
+                                if (typ.equals("TypC")) {
+                                    samoloty.add(new TypC(id, model));
+                                }
+                                if (typ.equals("TypD")) {
+                                    samoloty.add(new TypD(id, model));
+                                }
 
                                 break;
 
@@ -135,15 +222,16 @@ public class Main {
                                 //String toRemove;
                                 System.out.print("Podaj Id samolotu do usuniecia: ");
                                 String toRemove = scanner.next();
-                                for(int i=0;i< samoloty.size();i++){
-                                    if(samoloty.get(i).getId().equals(toRemove)){
+                                for (int i = 0; i < samoloty.size(); i++) {
+                                    if (samoloty.get(i).getId().equals(toRemove)) {
                                         samoloty.remove(samoloty.get(i));
                                     }
                                 }
                                 break;
 
                             case 3:
-                                for(int i=0;i<samoloty.size();i++) System.out.println(samoloty.get(i).toString());
+                                for (int i = 0; i < samoloty.size(); i++)
+                                    System.out.println(samoloty.get(i).toString());
                                 break;
 
                             case 4:
@@ -151,14 +239,13 @@ public class Main {
                         }
 
 
-                    }while (w!=4);
+                    } while (w != 4);
                     break;
 
                 case 3:
                     int w1;
 
-                    do
-                    {
+                    do {
                         System.out.println("Dostepnych tras: " + trasy.size());
                         System.out.println("Lotniska w bazie: " + lotniska.size());
                         System.out.println("1. Dodaj nowa trase");
@@ -169,21 +256,17 @@ public class Main {
                         System.out.println("Opcja: ");
                         w1 = scanner.nextInt();
 
-                        switch (w1)
-                        {
+                        switch (w1) {
                             case 1:
                                 System.out.print("Wybierz nr lotniska wylotu: ");
                                 int wylot = scanner.nextInt();
                                 System.out.print("Wybierz nr lotniska przylotu: ");
                                 int cel = scanner.nextInt();
 
-                                if(wylot > lotniska.size() || cel > lotniska.size())
-                                {
+                                if (wylot > lotniska.size() || cel > lotniska.size()) {
                                     System.out.println("\nBład indexu! Sprobuj ponownie.\n");
-                                }
-                                else
-                                {
-                                    trasy.add(new Trasa(lotniska.get(wylot-1),lotniska.get(cel-1)));
+                                } else {
+                                    trasy.add(new Trasa(lotniska.get(wylot - 1), lotniska.get(cel - 1)));
                                     break;
                                 }
                                 break;
@@ -193,22 +276,20 @@ public class Main {
                                 System.out.print("Podaj miasto: ");
                                 String miasto = scanner.next();
 
-                                lotniska.add(new Lotnisko(kraj,miasto));
+                                lotniska.add(new Lotnisko(kraj, miasto));
 
                                 break;
                             case 3:
 
-                                for (int i=0; i< trasy.size();i++)
-                                {
-                                    System.out.println(i+1 + ". " + trasy.get(i).toString());
+                                for (int i = 0; i < trasy.size(); i++) {
+                                    System.out.println(i + 1 + ". " + trasy.get(i).toString());
                                 }
 
                                 break;
                             case 4:
 
-                                for (int i=0; i< lotniska.size();i++)
-                                {
-                                    System.out.println(i+1 + ". " + lotniska.get(i).toString());
+                                for (int i = 0; i < lotniska.size(); i++) {
+                                    System.out.println(i + 1 + ". " + lotniska.get(i).toString());
                                 }
 
                                 break;
@@ -217,7 +298,7 @@ public class Main {
 
                         }
 
-                    }while (w1!=5);
+                    } while (w1 != 5);
 
                     break;
                 case 4:
@@ -245,7 +326,7 @@ public class Main {
                     break;
             }
 
-        }while (e!=liczbaOpcji);
+        } while (e != liczbaOpcji);
 
     }
 }
