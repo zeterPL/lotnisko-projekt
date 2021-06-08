@@ -1,0 +1,56 @@
+Ankara
+Bangkok
+Berlin
+Berno
+Brasilia
+Buenos Aires
+Chartum
+Chicago
+Dakar
+Denver
+Detroit
+Dublin
+Frankfurt
+Hamburg
+Helsinki
+Houston
+Kair
+Kapsztad
+La Paz
+Lima
+Lizbona
+Londyn
+Los Angeles
+Madryt
+Meksyk
+Melbourne
+Miami
+Moskwa
+Nowe Delhi
+Nowy Jork
+Nuuk
+Oslo
+Ottawa
+Panama
+Paryż
+Pekin
+Perth
+Pretoria
+Reykjavik
+Rio de Janeiro
+Ryga
+Rzym
+San Francisco
+Salt Lake City
+Santiago
+Seul
+Singapur
+Sydney
+Sztokholm
+Tallin
+Thorshavn
+Tokio
+Vancouver
+Warszawa
+Wilno
+Yellowknife
