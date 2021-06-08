@@ -357,8 +357,24 @@ public class Main {
 
 
 
-                            case 2:
-                                //
+                            case 2:   //anuluj lot
+                                System.out.println("------ Lista wszystkich dostępnych lotów: ------"); //zrobione
+
+                                for (int i = 0; i < loty.size(); i++) {
+                                    System.out.println(i + 1 + ". " + loty.get(i).toString());
+                                }
+                                System.out.println("------------------------------------------------");
+                                System.out.print("Nr lotu do usuniecia: ");
+                                int nr = scanner.nextInt();
+
+                                if(nr > loty.size())
+                                {
+                                    System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
+                                }
+                                else
+                                { loty.remove(nr-1);}
+
+
                                 break;
                             case 3:
                                 break;
@@ -486,7 +502,8 @@ public class Main {
                     //
                     break;
 
-                case 8:                                    //exit
+                case 8:
+                    break;//exit
             }
 
         } while (e != liczbaOpcji);
