@@ -8,7 +8,8 @@ public class TypA extends Samolot
     public TypA(String id, String model)
     {
         super(id,model);
-        //TODO przydzielenie miejsc i zaiegu
+        this.zasieg = 9800;
+        this.miejsca = 366;
     }
 
 }

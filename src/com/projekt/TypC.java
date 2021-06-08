@@ -8,6 +8,7 @@ public class TypC extends Samolot
     public TypC(String id, String model)
     {
         super(id,model);
-        //TODO przydzielenie miejsc i zaięgu
+        this.zasieg = 17370;
+        this.miejsca = 550;
     }
 }

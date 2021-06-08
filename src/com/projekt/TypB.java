@@ -8,6 +8,7 @@ public class TypB extends Samolot
     public TypB(String id, String model)
     {
         super(id,model);
-        //TODO przydzielenie miejsc i zaięgu
+        this.zasieg = 15900;
+        this.miejsca = 380;
     }
 }

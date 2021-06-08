@@ -8,6 +8,7 @@ public class TypD extends Samolot
     public TypD(String id, String model)
     {
         super(id,model);
-        //TODO przydzielenie miejsc i zaięgu
+        this.zasieg = 3700;
+        this.miejsca = 70;
     }
 }
