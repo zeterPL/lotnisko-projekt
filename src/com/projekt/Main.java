@@ -1,9 +1,13 @@
 package com.projekt;
 
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.NoSuchFileException;
+import java.util.*;
+import java.io.*;
 
 public class Main {
 
@@ -32,13 +36,18 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<Trasa> trasy = new LinkedList<>();
         List<Lotnisko> lotniska = new LinkedList<>();
         List<Samolot> samoloty = new LinkedList<>();
         List<Klient> klienci = new LinkedList<>();
         List<Lot> loty = new LinkedList<>();
         List<Rezerwacja> rezerwacje = new LinkedList<>();
+        List <String> listaMiast = new ArrayList<>();
+
+        String nazwaPliku = "ListaMiast.txt";
+    //    File plik = new File("ListaMiast.txt");
+        List<String> miasto = Files.readAllLines(Paths.get("ListaMiast.txt"));
 
 
         //numer wybranej opcji
