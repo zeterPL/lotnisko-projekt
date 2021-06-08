@@ -11,5 +11,13 @@ public class TypA extends Samolot
         this.zasieg = 9800;
         this.miejsca = 366;
     }
+    public void zdejmijMiejsce() {
+        miejsca = miejsca--;
+    }
+    public void zwolnijMiejsce() {
+        if (miejsca < 366) {
+            miejsca++;
+        }
+    }
 
 }
