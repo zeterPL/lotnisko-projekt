@@ -49,7 +49,7 @@ public class Main {
 
         String nazwaPliku = "ListaMiast.txt";
     //    File plik = new File("ListaMiast.txt");
-        List<String> miasto = Files.readAllLines(Paths.get("ListaMiast.txt"));
+      //  List<String> miasto = Files.readAllLines(Paths.get("ListaMiast.txt"));
 
 
         //numer wybranej opcji
@@ -257,9 +257,9 @@ public class Main {
                                 System.out.print("Podaj kraj: ");
                                 String kraj = scanner.next();
                                 System.out.print("Podaj miasto: ");
-                                String miasto = scanner.next();
+                                String m = scanner.next();
 
-                                lotniska.add(new Lotnisko(kraj, miasto));
+                                lotniska.add(new Lotnisko(kraj, m));
 
                                 break;
 
@@ -277,7 +277,7 @@ public class Main {
 
                     break;
                 case 4:
-                    int x;  //loty
+                    int x;                               //loty
                     do {
                         System.out.println("Liczba dostepnych lotow: " + loty.size());
 
@@ -295,30 +295,78 @@ public class Main {
                          x = scanner.nextInt();
 
                         switch(x) {
-                            case 1:
-                                if (trasy.size() > 2) {
-                                    System.out.println("Niewystarczająca ilość lotnisk.");
+                            case 1: //dodaj lot
+                                if (trasy.size() < 1) {
+                                    System.out.println("Niewystarczająca ilość tras.");
                                     break;
                                 }
+
                                 System.out.println("Wybierz trasę na której chcesz dodać lot: ");
                                 System.out.println("------ Lista dostępnych tras: ------");
                                 for (int i = 0; i < trasy.size(); i++) {
                                     System.out.println(i + 1 + ". " + trasy.get(i).toString());
                                 }
                                 System.out.println("------------------------------------");
+
                                 System.out.println("Wybór: ");
                                 int g = scanner.nextInt();
+
+                                if(g > trasy.size())
+                                {
+                                    System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
+                                }
+                                else
+                                {
+                                    Trasa t = trasy.get(g-1);
+                                    float odl = t.getDlugosc();
+
+                                    int j =0;
+                                    System.out.println("------ Lista samolotow obsugujacych ten dystans: ------");
+                                    for (int i = 0; i < samoloty.size(); i++)
+                                    {
+
+                                        if(odl <= samoloty.get(i).getZasieg())
+                                        {
+                                            System.out.println(j + 1 + ". " + samoloty.get(i).toString());
+                                            j++;
+                                        }
+
+                                    }
+
+                                     if(j==0)
+                                     {
+                                        System.out.println("\nBrak dostepnych samolotow\n");
+                                        break;
+                                     }
+
+                                    System.out.println("------------------------------------");
+
+                                     System.out.println("Wybierz numer samolotu: ");
+                                     System.out.print("Wybor:  ");
+                                     int in = scanner.nextInt();
+
+                                     Lot lot = new Lot();
+                                     lot.setTrasa(t);
+                                     lot.setSamolot(samoloty.get(in-1));
+                                     loty.add(lot);
+
+                                }
+
+
+
+
 
 
                             case 2:
                                 //
+                                break;
                             case 3:
                                 break;
                         }
                     } while(x!=3);
 
                 case 5:
-                    int z;//trasy
+                    int z;                                  //trasy
                     do
                     {
                     System.out.println("Ilość dostępnych tras: " + trasy.size());
@@ -391,6 +439,7 @@ public class Main {
 
                     switch(a) {
                         case 1:
+                            if(klienci.size() < 1) {System.out.println("Brak klientow"); break; }
                             System.out.println("Wybierz klienta rezerwującego lot: ");
                             System.out.println("-------------------------------------");
                              for (int i = 0; i < klienci.size(); i++) {
@@ -400,6 +449,7 @@ public class Main {
                             System.out.println("Wybór: ");
                             int q = scanner.nextInt();
 
+                            if(loty.size() < 1) {System.out.println("Brak lotow"); break; }
                             System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
                             System.out.println("-------------------------------------");
                             for (Lot lot : loty) {
@@ -427,8 +477,9 @@ public class Main {
                             System.out.println("Liczba dostępnych miejsc: ");
                             System.out.println(loty.get(f-1).getSamolot().getMiejsca());
                             
-                            rezerwacje.add(new Rezerwacja(new Bilet(/*cena biletu*/, numerBiletu), loty.get(f-1)));
-                    }
+                            rezerwacje.add(new Rezerwacja(new Bilet(5, numerBiletu), loty.get(f-1)));
+                    }                                               //dałem byle co żeby sie kompilowało
+                    //                                              //TODO cena biletu
                     break;
 
                 case 7: //                               zapisz lub otwórz stan systemu
