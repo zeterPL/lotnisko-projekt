@@ -1,14 +1,23 @@
 package com.projekt;
 
-
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
+    /*
+    OPCJA1
+    OPCJA2  ZROBIONE
+    OPCJA3  ZROBIONE
+    OPCJA4
+    OPCJA5
+     */
+
+
     //maksymalna liczba opcji programu
-    public static int liczbaOpcji = 8;
+    public static int liczbaOpcji = 6;
 
     //czy byl juz samolot z takim samym id
     public static boolean idCheck(String id, List<Samolot> samoloty) {
@@ -91,7 +100,6 @@ public class Main {
 
                                     if (w3 == 1) {
                                         int w4;
-
                                         do {
                                             System.out.println("1. Posrednik");
                                             System.out.println("2. Korporacja");
@@ -143,7 +151,7 @@ public class Main {
                                 break;
                         }
 
-                    } while (w2 != 3);
+                    } while (w2 != 5);
                     break;
                 case 2:                                     //samoloty
 
@@ -219,7 +227,7 @@ public class Main {
                         }
 
 
-                    } while (w != 3);
+                    } while (w != 4);
                     break;
 
                 case 3:                                    //lotniska
@@ -265,8 +273,7 @@ public class Main {
                     } while (w1 != 3);
 
                     break;
-                case 4:
-                    int x;  //loty
+                case 4:                                     //loty
                     do {
                         System.out.println("Liczba dostepnych lotow: " + loty.size());
 
@@ -279,9 +286,9 @@ public class Main {
 
                         System.out.println("1. Dodaj lot na trasie.");
                         System.out.println("2. Anuluj lot.");
-                        System.out.println("3. Wstecz.");
+                        System.out.println("3. Wyjdź.");
                         System.out.println("Wybór: ");
-                         x = scanner.nextInt();
+                        int x = scanner.nextInt();
 
                         switch(x) {
                             case 1:
@@ -304,12 +311,9 @@ public class Main {
                             case 3:
                                 break;
                         }
-                    } while(x!=3);
+                    } while(true);
 
-                case 5:
-                    int z;//trasy
-                    do
-                    {
+                case 5:                                    //trasy
                     System.out.println("Ilość dostępnych tras: " + trasy.size());
                     System.out.println("------ Lista dostępnych tras: ------");
                     for (int i = 0; i < trasy.size(); i++) {
@@ -317,57 +321,44 @@ public class Main {
                     }
                     System.out.println("------------------------------------");
 
+                    System.out.println("1. Dodaj nowe połączenie.");
+                    System.out.println("2. Wycofaj połączenie pomiędzy lotniskami.");
+                    System.out.println("3. Wyjdź.");
+                    System.out.println("Wybór: ");
+                    int z = scanner.nextInt();
 
-                        System.out.println("1. Dodaj nowe połączenie.");
-                        System.out.println("2. Wycofaj połączenie pomiędzy lotniskami.");
-                        System.out.println("3. Wstecz.");
-                        System.out.println("Wybór: ");
-                        z = scanner.nextInt();
-
-                        switch(z) {
-                            case 1:
-                                if (lotniska.size() == 0) {
-                                    System.out.println("Brak dostępnych lotnisk.");
-                                    break;
-                                }
-                                for (int i = 0; i < lotniska.size(); i++) {
-                                    System.out.println(i + 1 + ". " + lotniska.get(i).toString());
-                                }
-
-                                System.out.print("Wybierz nr lotniska wylotu: ");
-                                int wylot = scanner.nextInt();
-                                System.out.print("Wybierz nr lotniska przylotu: ");
-                                int cel = scanner.nextInt();
-
-                                if (wylot > lotniska.size() || cel > lotniska.size()) {
-                                    System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
-                                } else {
-                                    trasy.add(new Trasa(lotniska.get(wylot - 1), lotniska.get(cel - 1)));
-                                    break;
-                                }
-
-                            case 2:
-                                for (int i = 0; i < trasy.size(); i++) {
-                                    System.out.println(i + 1 + ". " + trasy.get(i).toString());
-                                }
-
-                                System.out.print("Wybierz nr trasy do usuniecia: ");
-                                int nr = scanner.nextInt();
-
-                                if(nr > trasy.size()){
-                                    System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
-                                }
-                                else {
-                                    trasy.remove(nr-1);
-                                }
-
+                    switch(z) {
+                        case 1:
+                            if (lotniska.size() == 0) {
+                                System.out.println("Brak dostępnych lotnisk.");
                                 break;
+                            }
+                            for (int i = 0; i < lotniska.size(); i++) {
+                                System.out.println(i + 1 + ". " + lotniska.get(i).toString());
+                            }
 
-                            case 3:
+                            System.out.print("Wybierz nr lotniska wylotu: ");
+                            int wylot = scanner.nextInt();
+                            System.out.print("Wybierz nr lotniska przylotu: ");
+                            int cel = scanner.nextInt();
+
+                            if (wylot > lotniska.size() || cel > lotniska.size()) {
+                                System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
+                            } else {
+                                trasy.add(new Trasa(lotniska.get(wylot - 1), lotniska.get(cel - 1)));
                                 break;
-                        }
+                            }
+                    }
 
-                    }while (z!=3);
+                    /*
+                    loty
+                    trasy
+                    klienci
+                    rezerwacje
+                    samoloty
+                    lotniska
+
+                     */
 
                     break;
 
