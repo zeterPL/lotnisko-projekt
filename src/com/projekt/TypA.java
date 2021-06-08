@@ -2,8 +2,6 @@ package com.projekt;
 
 public class TypA extends Samolot
 {
-    private int miejsca;
-    private int zasieg;
 
     public TypA(String id, String model)
     {
@@ -19,5 +17,6 @@ public class TypA extends Samolot
             miejsca++;
         }
     }
+
 
 }
