@@ -15,7 +15,7 @@ public class Trasa
         //TODO wyliczenie i ustawienie dlugosci
 
         String poczatek  = baza.getMiasto();
-        String koniec = baza.getMiasto();
+        String koniec = cel.getMiasto();
         List<String> miasta = Files.readAllLines(Paths.get("ListaMiast.txt"));
         int indeksPoczatku, indeksKonca;
         for (int i = 0; i < miasta.size(); i++)
@@ -41,7 +41,7 @@ public class Trasa
         String nazwaPliku; 					// NAZWA PLIKU TO CIAG ZNAKOW, WIEC STRING
  //       nazwaPliku = czytamZKlawiatury.nextLine(); //NAZWA PLIKU PODAJE Z KLAWIATURY
         nazwaPliku = "macierzOdleglosci.csv";
-        double odczyt = odczytaj(nazwaPliku.csv);
+       // double odczyt = odczytaj(nazwaPliku);
 
         int[][] tablicaOdleglosci = new int [miasta.size()][miasta.size()];
 
@@ -49,8 +49,7 @@ public class Trasa
     }
 
 
-    public Trasa(Lotnisko baza, Lotnisko cel)
-    {
+    public Trasa(Lotnisko baza, Lotnisko cel) throws IOException {
         this.baza = baza;
         this.cel = cel;
 

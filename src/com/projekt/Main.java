@@ -353,10 +353,6 @@ public class Main {
                                 }
 
 
-
-
-
-
                             case 2:   //anuluj lot
                                 System.out.println("------ Lista wszystkich dostępnych lotów: ------"); //zrobione
 
