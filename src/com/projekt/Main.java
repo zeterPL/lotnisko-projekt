@@ -11,6 +11,11 @@ import java.io.*;
 
 public class Main {
 
+    //TODO UWAGA: W implementacji programu należy OBOWIĄZKOWO wykorzystać i opisać przynajmniej
+    // jedną bibliotekę użytego języka programowania opisaną w jego dokumentacji technicznej
+    // w języku angielskim (EU5).
+
+
     //maksymalna liczba opcji programu
     public static int liczbaOpcji = 8;
 
@@ -459,7 +464,7 @@ public class Main {
                              }
                             System.out.println("-------------------------------------");
                             System.out.println("Wybór: ");
-                            int q = scanner.nextInt();
+                            int q = scanner.nextInt(); //todo klient musi miec rezerwacje a lot klienta
 
                             if(loty.size() < 1) {System.out.println("Brak lotow"); break; }
                             System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
