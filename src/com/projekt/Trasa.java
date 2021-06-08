@@ -1,6 +1,7 @@
 package com.projekt;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.io.*;
@@ -41,15 +42,28 @@ public class Trasa
         String nazwaPliku; 					// NAZWA PLIKU TO CIAG ZNAKOW, WIEC STRING
  //       nazwaPliku = czytamZKlawiatury.nextLine(); //NAZWA PLIKU PODAJE Z KLAWIATURY
         nazwaPliku = "macierzOdleglosci.csv";
-       // double odczyt = odczytaj(nazwaPliku);
 
         int[][] tablicaOdleglosci = new int [miasta.size()][miasta.size()];
 
-
+        Scanner sc = new Scanner(new BufferedReader(new FileReader("macierzOdleglosci.csv")));
+        while(sc.hasNextLine())
+        {
+            for (int i=0; i<miasta.size(); i++)
+            {
+                String[] line = sc.nextLine().trim().split(";");    // TRIM - bez spacji na poczatku i koncu
+                for (int j=0; j<miasta.size(); j++)
+                {
+                    tablicaOdleglosci[i][j] = Integer.parseInt(line[j]);
+                }
+            }
+        }
+    //    System.out.println(Arrays.deepToString(tablicaOdleglosci)); // PRINTOWANIE MOZE SIE PRZYDAC
+        this.dlugosc = tablicaOdleglosci[indeksPoczatku][indeksKonca];     // DLUGOSC TRASY TO EL. TABLICY
     }
 
 
-    public Trasa(Lotnisko baza, Lotnisko cel) throws IOException {
+    public Trasa(Lotnisko baza, Lotnisko cel) throws IOException
+    {
         this.baza = baza;
         this.cel = cel;
 
