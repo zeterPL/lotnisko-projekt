@@ -10,6 +10,11 @@ public class Trasa
     {
         //TODO wyliczenie i ustawienie dlugosci
 
+        String poczatek  = baza.getMiasto();
+        String koniec = baza.getMiasto();
+
+        // dalej po pliku forem
+
         //tymczasowo
         this.dlugosc = 10000;
     }
