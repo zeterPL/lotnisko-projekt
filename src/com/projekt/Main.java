@@ -91,6 +91,7 @@ public class Main {
 
                                     if (w3 == 1) {
                                         int w4;
+
                                         do {
                                             System.out.println("1. Posrednik");
                                             System.out.println("2. Korporacja");
