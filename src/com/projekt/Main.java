@@ -44,6 +44,8 @@ public class Main {
         List<Lot> loty = new LinkedList<>();
         List<Rezerwacja> rezerwacje = new LinkedList<>();
         List <String> listaMiast = new ArrayList<>();
+        LinkedList numeryBiletow = new LinkedList();                               
+        Random generator = new Random();                                           
 
         String nazwaPliku = "ListaMiast.txt";
     //    File plik = new File("ListaMiast.txt");
@@ -381,7 +383,52 @@ public class Main {
                     break;
 
                 case 6:                                    //rezerwacje
-                    //
+                    System.out.println("1. Dodaj nową rezerwację. ");
+                    System.out.println("2. Sprawdź ilość rezerwacji na danym locie. ");
+                    System.out.println("3. Usuń rezerwację. ");
+
+                    int a = scanner.nextInt();
+
+                    switch(a) {
+                        case 1:
+                            System.out.println("Wybierz klienta rezerwującego lot: ");
+                            System.out.println("-------------------------------------");
+                             for (int i = 0; i < klienci.size(); i++) {
+                                 System.out.println(i + 1 + ". " + klienci.get(i).toString());
+                             }
+                            System.out.println("-------------------------------------");
+                            System.out.println("Wybór: ");
+                            int q = scanner.nextInt();
+
+                            System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
+                            System.out.println("-------------------------------------");
+                            for (Lot lot : loty) {
+                                System.out.println(1 + 1 + ". " + lot.toString());
+                            }
+                            System.out.println("-------------------------------------");
+                             int f = scanner.nextInt();
+
+                             int numerBiletu = generator.nextInt(41000);
+
+                            Iterator it = numeryBiletow.iterator();
+                            boolean istniejeNumer = true;
+                            while(istniejeNumer) {
+                                for (Object o : numeryBiletow) {
+                                    if (o.equals(numerBiletu)) {
+                                        istniejeNumer = true;
+                                        numerBiletu = generator.nextInt(41000);
+                                    } else {
+                                        istniejeNumer = false;
+                                    }
+                                }
+                            }
+                            System.out.println("Twój numer biletu: " + numerBiletu);
+                            System.out.println(numerBiletu);
+                            System.out.println("Liczba dostępnych miejsc: ");
+                            System.out.println(loty.get(f-1).getSamolot().getMiejsca());
+                            
+                            rezerwacje.add(new Rezerwacja(new Bilet(/*cena biletu*/, numerBiletu), loty.get(f-1)));
+                    }
                     break;
 
                 case 7: //                               zapisz lub otwórz stan systemu
