@@ -31,4 +31,8 @@ public class Trasa
     {
         return "Trasa: " + baza.toString() + " do " + cel.toString() + " " + "Dlugosc: " + dlugosc;
     }
+
+    public float getDlugosc() {
+        return dlugosc;
+    }
 }

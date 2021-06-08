@@ -1,6 +1,5 @@
 package com.projekt;
 
-import java.time.LocalDateTime; //może ta może inna ... będzie można ją opisać
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,14 +9,13 @@ public class Lot
     private Samolot samolot;
     private Trasa trasa;
 
-    //może będzie inny typ, trzeba zobaczyć czy jest jakiś lepszy
-    private LocalDateTime gPowrot;
-    private LocalDateTime gPodroz;
+
+    private float gPodroz; //czas podróży
 
     public Lot()
     {
         klienci = new LinkedList<>();
-        //TODO generowanie godzin w konstruktorze
+        gPodroz = trasa.getDlugosc()/800;
     }
 
     public Samolot getSamolot() {
@@ -40,7 +38,7 @@ public class Lot
 
     public String toString()
     {
-        return trasa.toString() + " " + samolot.toString();
+        return trasa.toString() + " " + samolot.toString() + " " + " Czas podróży: " + gPodroz + "h";
 
     }
 }
