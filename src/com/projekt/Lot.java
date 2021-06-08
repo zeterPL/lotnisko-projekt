@@ -15,7 +15,7 @@ public class Lot
     public Lot()
     {
         klienci = new LinkedList<>();
-        gPodroz = trasa.getDlugosc()/800;
+        gPodroz = trasa.getDlugosc()/800; //800km/h prędkość
     }
 
     public Samolot getSamolot() {
