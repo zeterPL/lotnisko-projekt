@@ -14,7 +14,32 @@ public class TypA extends Samolot
         miejscaEkonomiczna = 196;
         this.type = "TypA";
     }
-       public int getMiejscaPierwszaKl() {
+    public void zarezerwujMiejscePierwszaKl() {
+        miejscaPierwszaKl = miejscaPierwszaKl--;
+    }
+
+    public void zarezerwujMiejsceBiznesowa() {
+        miejscaBiznesowa = miejscaBiznesowa--;
+    }
+
+    public void zarezerwujMiejsceEkonomiczna() {
+        miejscaEkonomiczna = miejscaEkonomiczna--;
+    }
+
+    public void zwolnijMiejscePierwszaKl() {
+        miejscaPierwszaKl++;
+    }
+
+    public void zwolnijMiejsceBiznesowa() {
+        miejscaBiznesowa++;
+    }
+
+    public void zwolnijMiejsceEkonomiczna() {
+        miejscaEkonomiczna++;
+    }
+    
+    
+    public int getMiejscaPierwszaKl() {
         return miejscaPierwszaKl;
     }
 
@@ -25,6 +50,4 @@ public class TypA extends Samolot
     public int getMiejscaEkonomiczna() {
         return miejscaEkonomiczna;
     }
-    }
-
 }
