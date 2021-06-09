@@ -36,6 +36,14 @@ public class Lot
         this.trasa = trasa;
     }
 
+    public Trasa getTrasa() {
+        return trasa;
+    }
+
+    public float getgPodroz() {
+        return gPodroz;
+    }
+
     public String toString()
     {
         return trasa.toString() + " " + samolot.toString() + " " + " Czas podróży: " + gPodroz + "h";

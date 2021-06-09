@@ -5,12 +5,21 @@ import java.util.List;
 
 public class Klient
 {
-    public List<Rezerwacja> rezerwacje;
+    private List<Rezerwacja> rezerwacje;
+    private int id = 0; //tymczasowo
 
     public Klient() { rezerwacje = new LinkedList<>(); }
 
     public void addRezerwacja(Rezerwacja rezerwacja) { rezerwacje.add(rezerwacja); }
     public List<Rezerwacja> getRezerwacje() { return rezerwacje; }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String toString()
     {

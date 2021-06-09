@@ -33,7 +33,7 @@ public class Main {
         System.out.println("1. Zarządzaj klientami"); //done
         System.out.println("2. Zarzadzaj samolotami"); //done
         System.out.println("3. Zarzadzaj lotniskami"); //done
-        System.out.println("4. Zarządzaj lotami"); //TODO
+        System.out.println("4. Zarządzaj lotami"); //done
         System.out.println("5. Zarządzaj trasami"); //done
         System.out.println("6. Zarządzaj rezerwacjami"); //TODO
         System.out.println("7. Zapisz lub otworz stan systemu"); //TODO
@@ -53,7 +53,7 @@ public class Main {
         Random generator = new Random();                                           
 
         String nazwaPliku = "ListaMiast.txt";
-    //    File plik = new File("ListaMiast.txt");
+     //    File plik = new File("ListaMiast.txt");
       //  List<String> miasto = Files.readAllLines(Paths.get("ListaMiast.txt"));
 
 
@@ -500,7 +500,108 @@ public class Main {
                     break;
 
                 case 7: //                               zapisz lub otwórz stan systemu
-                    //
+
+                     /*
+                                ZAPIS
+                                klienci
+                                rezerwacje
+                                trasy //done
+                                loty
+                                lotniska  //done
+
+
+                                ODCZYT //TODO
+                       */
+
+
+                    int wybor;
+
+                    do
+                    {
+
+                        System.out.println("1. Zapisz dane do pliku txt");
+                        System.out.println("2. Otwórz dane z pliku txt");
+                        System.out.println("3. Wstecz");
+                        System.out.print("Opcja: ");
+                        wybor = scanner.nextInt();
+
+                        switch (wybor)
+                        {
+                            case 1: //zapisz
+
+
+
+                                if(trasy.size() == 0 && loty.size() == 0 && lotniska.size() == 0
+                                    && samoloty.size() == 0 && klienci.size() == 0 && rezerwacje.size() == 0)
+                                {
+                                    System.out.println("\nBrak danych w systemie!\n");
+                                    break;
+                                }
+                                else
+                                {
+                                    System.out.print("Podaj nazwe i sciezke do pliku : ");
+                                    String sciezkaPlik = scanner.next();
+
+                                    PrintWriter zapis = new PrintWriter(sciezkaPlik);
+
+                                    //klienci
+                                    zapis.println("KLIENCI");
+
+
+
+                                    //rezerwacje
+                                    zapis.println("REZERWACJE");
+
+                                    //trasy
+                                    zapis.println("TRASY");
+                                    for (int i=0; i< trasy.size(); i++)
+                                    {
+                                        zapis.println(trasy.get(i).toString());
+                                    }
+
+                                    //loty
+                                    zapis.println("LOTY");
+                                    for (int i=0; i< loty.size(); i++)
+                                    {
+                                        Lot obecny = loty.get(i);
+                                        List<Klient> k =obecny.getKlienci();
+                                        zapis.println(obecny.getTrasa().toString() + " " + obecny.getSamolot().toString() + " "
+                                        + obecny.getgPodroz());
+
+                                        for(int j=0;j<k.size();j++)
+                                        {
+                                            System.out.println(k.get(i).getId() + k.get(i).toString());
+                                        }
+
+                                    }
+
+                                    //lotniska
+                                    zapis.println("LOTNISKA");
+                                    for(int i=0; i< lotniska.size(); i++)
+                                    {
+                                        zapis.println(lotniska.get(i).toString());
+                                    }
+
+                                    zapis.close();
+
+                                    System.out.println("-------------------------------------");
+                                    System.out.println("DANE ZAPISANE W " + sciezkaPlik);
+                                    System.out.println("-------------------------------------");
+
+                                }
+
+                                break;
+
+                            case 2: //otwórz
+                                break;
+
+                            case 3: //wstecz
+                                break;
+                        }
+
+
+                    }while(wybor!=3);
+
                     break;
 
                 case 8:

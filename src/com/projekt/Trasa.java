@@ -18,13 +18,14 @@ public class Trasa
         String poczatek  = baza.getMiasto();
         String koniec = cel.getMiasto();
         List<String> miasta = Files.readAllLines(Paths.get("ListaMiast.txt"));
-        int indeksPoczatku, indeksKonca;
+        int indeksPoczatku=0, indeksKonca=0; //domyslna wartosc 0 zeby sie kompilowało
         for (int i = 0; i < miasta.size(); i++)
         {
             if (miasta.get(i).equals(poczatek)) // RÓWNOSC Z POCZATKIEM MIASTA Z LISTY O INDEKSIE I
             {
                 indeksPoczatku = i;
             }
+            else
             if (miasta.get(i).equals(koniec)) // CZY ELEMENT LISTY O DANYM INDEKSIE JEST ROWNY,
             {
                 indeksKonca = i;
