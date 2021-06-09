@@ -674,17 +674,15 @@ public class Main {
                                     System.out.println(i + 1 + ". " + loty.get(i).toString());
                                 }
                                 System.out.println("Wybór: ");
-                                int g = scanner.nextInt(); //numer lotu
+                                int nrlotu = scanner.nextInt(); //numer lotu
 
                                 System.out.println("Wybierz numer klienta: ");
 
-                                for (int i = 0; i < loty.get(g - 1).getKlienci().size(); i++) {
-                                    System.out.println(i + 1 + ". " + loty.get(g - 1).getKlienci().toString());
+                                for (int i = 0; i < loty.get(nrlotu - 1).getKlienci().size(); i++) {
+                                    System.out.println(i + 1 + ". " + loty.get(nrlotu - 1).getKlienci().toString());
                                 }
-                                int h = scanner.nextInt(); //numer klienta z lotu(ale nie id)
+                                int nrklienta = scanner.nextInt(); //numer klienta z lotu(ale nie id)
 
-                                loty.get(g - 1).getKlienci().remove(h - 1); //usuwanie klienta z lotu
-                                
                                 switch (loty.get(nrlotu - 1).getKlient(nrklienta - 1).getKlasa()) {
                                     case "Biznesowa" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceBiznesowa();
                                     case "Ekonomiczna" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceEkonomiczna();
