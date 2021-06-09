@@ -563,7 +563,7 @@ public class Main {
                                 System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
                                 System.out.println("-------------------------------------");
                                 for (Lot lot : loty) {
-                                    System.out.println(1 + 1 + ". " + lot.toString());
+                                    System.out.println(i + 1 + ". " + lot.toString());
                                 }
                                 System.out.println("-------------------------------------");
                                 int f = scanner.nextInt(); //numer lotu
@@ -651,6 +651,7 @@ public class Main {
                                 int d = scanner.nextInt();
 
                                 System.out.println(loty.get(d - 1).getKlienci().toString());
+                                break;
                             case 3:
                                 System.out.println("Wybierz numer lotu na którym chcesz usunąć rezerwację: ");
 
@@ -683,9 +684,8 @@ public class Main {
                                         }
                                     }
                                 }
+                                break;
                         }
-                        //
-                        break;
 
                     } while (a != 4);
 
