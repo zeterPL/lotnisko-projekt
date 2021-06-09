@@ -10,6 +10,7 @@ public class Posrednik extends Klient
         this.type = "Posrednik";
     }
 
+    //NIE ZMIENIAC
     @Override
     public String toString() {
         return nazwa;

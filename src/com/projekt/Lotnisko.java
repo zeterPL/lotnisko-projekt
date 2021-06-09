@@ -19,6 +19,7 @@ public class Lotnisko
         this.miasto = miasto;
     }
 
+    //NIE ZMIENIAĆ
     public String toString()
     {
         return this.miasto + " " + this.kraj;
