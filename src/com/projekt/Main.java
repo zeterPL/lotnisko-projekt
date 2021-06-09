@@ -50,7 +50,8 @@ public class Main {
         List<Rezerwacja> rezerwacje = new LinkedList<>();
         //List <String> listaMiast = new ArrayList<>();
         LinkedList numeryBiletow = new LinkedList();                               
-        Random generator = new Random();                                           
+        Random generator = new Random(); 
+        List <Bilet> bilety = new LinkedList<>();                                          
 
 
 
@@ -512,80 +513,153 @@ public class Main {
 
                       break;
 
-                  case 6:                                    //rezerwacje
-                      int a =0;
+                  case 6:
+                    int a = 0;
+                    do {
+                        System.out.println("1. Dodaj nową rezerwację. ");
+                        System.out.println("2. Sprawdź ilość rezerwacji na danym locie. ");
+                        System.out.println("3. Usuń rezerwację. ");
+                        System.out.println("4. Wstecz.");
+                        System.out.println("Wybor: ");
 
-                      do
-                      {
-                          System.out.println("1. Dodaj nową rezerwację. ");
-                          System.out.println("2. Sprawdź ilość rezerwacji na danym locie. ");
-                          System.out.println("3. Usuń rezerwację. ");
-                          System.out.println("4. Wstecz ");
-                          System.out.println("Wybor: ");
-
-                          try
-                          {
-                              a = scanner.nextInt();
-                          }
-                          catch (InputMismatchException ex)
-                          {
-                              System.out.println("\nPodaj numer opcji do wykonania!\n");
-                          }
-
-                          switch(a) {
-                              case 1:
-                                  if(klienci.size() < 1) {System.out.println("Brak klientow"); break; }
-                                  System.out.println("Wybierz klienta rezerwującego lot: ");
-                                  System.out.println("-------------------------------------");
-                                  for (int i = 0; i < klienci.size(); i++) {
-                                      System.out.println(i + 1 + ". " + klienci.get(i).toString());
-                                  }
-                                  System.out.println("-------------------------------------");
-                                  System.out.println("Wybór: ");
-                                  int q = scanner.nextInt(); //todo klient musi miec rezerwacje a lot klienta
-
-                                  if(loty.size() < 1) {System.out.println("Brak lotow"); break; }
-                                  System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
-                                  System.out.println("-------------------------------------");
-                                  for (Lot lot : loty) {
-                                      System.out.println(1 + 1 + ". " + lot.toString());
-                                  }
-                                  System.out.println("-------------------------------------");
-                                  int f = scanner.nextInt();
-
-                                  int numerBiletu = generator.nextInt(41000);
-
-                                  Iterator it = numeryBiletow.iterator();
-                                  boolean istniejeNumer = true;
-                                  while(istniejeNumer) {
-                                      for (Object o : numeryBiletow) {
-                                          if (o.equals(numerBiletu)) {
-                                              istniejeNumer = true;
-                                              numerBiletu = generator.nextInt(41000);
-                                          } else {
-                                              istniejeNumer = false;
-                                          }
-                                      }
-                                  }
-                                  System.out.println("Twój numer biletu: " + numerBiletu);
-                                  System.out.println(numerBiletu);
-                                  System.out.println("Liczba dostępnych miejsc: ");
-                                  System.out.println(loty.get(f-1).getSamolot().getMiejsca());
+                        try 
+                        {
+                            a = scanner.nextInt();
+                        } 
+                        catch (InputMismatchException ex) 
+                        {
+                            System.out.println("\nPodaj właściwy numer opcji do wykonania!\n");
+                        }
 
 
-                                  rezerwacje.add(new Rezerwacja(new Bilet(5, numerBiletu), loty.get(f-1)));
-                                  //dałem byle co żeby sie kompilowało
-                                  //TODO cena biletu
-                                  break;
+                        switch(a) {
+                            case 1:
+                                if(klienci.size() < 1) {System.out.println("Brak klientow"); break; }
+                                System.out.println("Wybierz klienta rezerwującego lot: ");
+                                System.out.println("-------------------------------------");
+                                for (int i = 0; i < klienci.size(); i++) {
+                                    System.out.println(i + 1 + ". " + klienci.get(i).toString());
+                                }
+                                System.out.println("-------------------------------------");
+                                System.out.println("Wybór: ");
+                                int q = scanner.nextInt(); //numer klienta
 
-                              case 2:
-                                  break;
+                                if(loty.size() < 1) {System.out.println("Brak lotow"); break; }
+                                System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
+                                System.out.println("-------------------------------------");
+                                for (Lot lot : loty) {
+                                    System.out.println(1 + 1 + ". " + lot.toString());
+                                }
+                                System.out.println("-------------------------------------");
+                                int f = scanner.nextInt(); //numer lotu
 
-                              case 3: //out
-                                  break;
-                          }
+                                int numerBiletu = generator.nextInt(41000);
 
-                      }while(a!=4);
+                                Iterator it = numeryBiletow.iterator();
+                                boolean istniejeNumer = true;
+                                while(istniejeNumer) {
+                                    for (Object o : numeryBiletow) {
+                                        if (o.equals(numerBiletu)) {
+                                            istniejeNumer = true;
+                                            numerBiletu = generator.nextInt(41000);
+                                        } else {
+                                            istniejeNumer = false;
+                                        }
+                                    }
+                                }
+                                System.out.println("Twój numer biletu: " + numerBiletu);
+                                System.out.println(numerBiletu);
+
+                                int wyborKlasy = 0;
+                                boolean wyborKlasyOk = false;
+                                while (!wyborKlasyOk) {
+                                    System.out.println("Wybierz klasę: ");
+                                    System.out.println("1. Pierwsza Klasa: " + loty.get(f-1).getSamolot().getMiejscaPierwszaKl() + " wolnych miejsc");
+                                    System.out.println("2. Biznesowa: " + loty.get(f-1).getSamolot().getMiejscaBiznesowa() + " wolnych miejsc");
+                                    System.out.println("3. Ekonomiczna: " + loty.get(f-1).getSamolot().getMiejscaEkonomiczna() + " wolnych miejsc");
+                                    System.out.println("Wybór: ");
+                                    wyborKlasy = scanner.nextInt();
+                                    if (wyborKlasy == 1 || wyborKlasy == 2 || wyborKlasy == 3) {
+                                        wyborKlasyOk = true;
+                                    } else {
+                                        System.out.println("Wybierz poprawny numer klasy!");
+                                    }
+                                }
+                                klienci.get(q - 1).setKlasa(wyborKlasy); // dodałem klasy do klienta żeby potem było wiadomo
+                                int nrMiejsca;                           // z jakiej klasy zwolnić miejsce przy usuwaniu
+                                double cenaBiletu;                       // rezerwacji
+
+                                switch (wyborKlasy) {
+                                    case 1:
+                                        if (loty.get(f-1).getSamolot().getMiejscaPierwszaKl() == 0) {
+                                            System.out.println("Brak wolnych miejsc w pierwszej klasie! Wybierz inną klasę.");
+                                        }
+                                        nrMiejsca = loty.get(f-1).getSamolot().getMiejscaPierwszaKl();
+                                        loty.get(f-1).getSamolot().zarezerwujMiejscePierwszaKl(); // liczba miejsc w samolocie -1
+                                        cenaBiletu = loty.get(f-1).getSamolot().getMnoznikPierwszaKl() * loty.get(f-1).getTrasa().getDlugosc();
+                                        // wyliczona cena (mnoznik klasy * długość trasy)
+                                        break;
+                                    case 2:
+                                        if (loty.get(f-1).getSamolot().getMiejscaBiznesowa() == 0) {
+                                            System.out.println("Brak wolnych miejsc w klasie biznesowej! Wybierz inną klasę.");
+                                        }
+                                        nrMiejsca = loty.get(f-1).getSamolot().getMiejscaBiznesowa();
+                                        loty.get(f-1).getSamolot().zarezerwujMiejsceBiznesowa();
+                                        cenaBiletu = loty.get(f-1).getSamolot().getMnoznikBiznesowa() * loty.get(f-1).getTrasa().getDlugosc();
+                                        break;
+                                    case 3:
+                                        if (loty.get(f-1).getSamolot().getMiejscaEkonomiczna() == 0) {
+                                            System.out.println("Brak wolnych miejsc w klasie ekonomicznej! Wybierz inną klasę.");
+                                        }
+                                        nrMiejsca = loty.get(f-1).getSamolot().getMiejscaEkonomiczna();
+                                        loty.get(f-1).getSamolot().zarezerwujMiejsceEkonomiczna();
+                                        cenaBiletu = loty.get(f-1).getSamolot().getMnoznikEkonomiczna() * loty.get(f-1).getTrasa().getDlugosc();
+                                        break;
+                                    default:
+                                        cenaBiletu = 0;
+                                        nrMiejsca = 0;
+                                        break;
+                                }
+
+                                System.out.println("Cena biletu wynosi " + cenaBiletu + "zł");
+                                loty.get(f-1).addKlient(klienci.get(q-1)); //dodany klient do lotu
+                                bilety.add(new Bilet(cenaBiletu, nrMiejsca)); //dodany nowy bilet do listy
+                                rezerwacje.add(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana nowa rezerwacja do listy
+                                klienci.get(q - 1).addRezerwacja(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana rezerwacja do klienta
+                                break;
+                            case 2:
+                                System.out.println("------ Wybierz lot z listy: ------");
+                                for (int i = 0; i < loty.size(); i++) {
+                                    System.out.println(i + 1 + ". " + loty.get(i).toString());
+                                }
+                                System.out.println("----------------------------------");
+                                int d = scanner.nextInt();
+
+                                System.out.println(loty.get(d - 1).getKlienci().toString());
+                            case 3:
+                                System.out.println("Wybierz numer lotu na którym chcesz usunąć rezerwację: ");
+
+                                for (int i = 0; i < loty.size(); i++) {
+                                    System.out.println(i + 1 + ". " + loty.get(i).toString());
+                                }
+                                System.out.println("Wybór: ");
+                                int g = scanner.nextInt(); //numer lotu
+
+                                System.out.println("Wybierz numer klienta: ");
+
+                                for (int i = 0; i < loty.get(g - 1).getKlienci().size(); i++) {
+                                    System.out.println(i + 1 + ". " + loty.get(g - 1).getKlienci().toString());
+                                }
+                                int h = scanner.nextInt(); //numer klienta z lotu(ale nie id)
+
+                                loty.get(g - 1).getKlienci().remove(h - 1); //usuwanie klienta z lotu
+
+
+                        }
+                        //
+                        break;
+
+                    } while (a != 4);
 
                       break;
 
