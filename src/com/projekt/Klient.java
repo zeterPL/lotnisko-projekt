@@ -43,4 +43,8 @@ public class Klient
             klasa = "Ekonomiczna";
         }
     }
+
+    public String getKlasa() {
+        return klasa;
+    }
 }
