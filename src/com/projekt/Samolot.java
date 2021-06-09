@@ -4,7 +4,7 @@ public class Samolot
 {
     private String model;
     private String id;
-    public String type;
+    protected String type;
 
     protected int miejscaPierwszaKl;
     protected int miejscaBiznesowa;
