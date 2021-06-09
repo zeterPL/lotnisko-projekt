@@ -1,11 +1,7 @@
 package com.projekt;
 
-
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.io.IOException;
-import java.nio.file.Paths;
-import java.nio.file.NoSuchFileException;
+
 import java.util.*;
 import java.io.*;
 
@@ -53,12 +49,7 @@ public class Main {
         Random generator = new Random(); 
         List <Bilet> bilety = new LinkedList<>();                                          
 
-
-
         String nazwaPliku = "ListaMiast.txt";
-     //    File plik = new File("ListaMiast.txt");
-      //  List<String> miasto = Files.readAllLines(Paths.get("ListaMiast.txt"));
-
 
         //numer wybranej opcji
         int e=0;
@@ -700,9 +691,6 @@ public class Main {
                       break;
 
                   case 7: //                               zapisz lub otwórz stan systemu
-
-
-
 
                       int wybor=0;
 
