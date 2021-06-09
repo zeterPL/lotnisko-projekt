@@ -94,7 +94,8 @@ public class Main {
                           System.out.println("--------Lista klientów: ---------"); //zrobione
 
                           for (int i = 0; i < klienci.size(); i++) {
-                              System.out.println(i + 1 + ". " + klienci.get(i).toString());
+                              System.out.println(i + 1 + ". " + klienci.get(i).type+ " " + klienci.get(i).toString()
+                              + " liczba rezerwacji: "+klienci.get(i).getRezerwacje().size());
                           }
                           System.out.println("---------------------------------");
                           System.out.println("1. Dodaj klienta."); //zrobione
