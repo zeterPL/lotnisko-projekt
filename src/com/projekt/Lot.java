@@ -1,5 +1,9 @@
 package com.projekt;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,6 +12,7 @@ public class Lot
     private List<Klient> klienci;
     private Samolot samolot;
     private Trasa trasa;
+    String gPowrot;
 
     protected String type;
 
@@ -36,7 +41,14 @@ public class Lot
 
     public void setTrasa(Trasa trasa) {
         this.trasa = trasa;
+        LocalDateTime teraz = LocalDateTime.now();
         gPodroz = trasa.getDlugosc()/800; //800km/h prędkość
+        LocalDateTime gPowrot = teraz.plusHours((long)gPodroz);
+
+        DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        String formatted = gPowrot.format(myFormat);
+
+        this.gPowrot = formatted;
     }
 
     public Trasa getTrasa() {
@@ -49,7 +61,9 @@ public class Lot
 
     public String toString()
     {
-        return trasa.toString() + " " + samolot.toString() + " " + " Czas podróży: " + gPodroz + "h";
+        return trasa.toString() + " " + samolot.toString() + " " + "\n Czas podróży: " + gPodroz + "h " +
+                "Godzina powrotu: " +
+                gPowrot;
 
     }
 }
