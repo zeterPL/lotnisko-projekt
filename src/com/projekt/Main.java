@@ -695,17 +695,7 @@ public class Main {
 
                   case 7: //                               zapisz lub otwórz stan systemu
 
-                     /*
-                                ZAPIS
-                                klienci
-                                rezerwacje
-                                trasy //done
-                                loty
-                                lotniska  //done
 
-
-                                ODCZYT //TODO
-                       */
 
 
                       int wybor=0;
@@ -834,7 +824,7 @@ public class Main {
                                       while (s.hasNextLine()) {
                                           nazwa = s.nextLine();
 
-                                          //TODO DOKONCZYC WARUNEK i IFY
+
 
 
                                           if (nazwa.equals("LOTNISKA")) {
