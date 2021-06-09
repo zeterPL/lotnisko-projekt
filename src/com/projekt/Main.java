@@ -684,6 +684,13 @@ public class Main {
                                 int h = scanner.nextInt(); //numer klienta z lotu(ale nie id)
 
                                 loty.get(g - 1).getKlienci().remove(h - 1); //usuwanie klienta z lotu
+                                
+                                switch (loty.get(nrlotu - 1).getKlient(nrklienta - 1).getKlasa()) {
+                                    case "Biznesowa" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceBiznesowa();
+                                    case "Ekonomiczna" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceEkonomiczna();
+                                    case "Pierwsza" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejscePierwszaKl();
+                                }    //zwalnianie miejsca w odpowiedniej klasie
+                                loty.get(nrlotu - 1).getKlienci().remove(nrklienta - 1); //usuwanie klienta z lotu
 
 
                         }
