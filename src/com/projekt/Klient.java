@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Klient
 {
-    private List<Rezerwacja> rezerwacje;
+    private LinkedList<Rezerwacja> rezerwacje = new LinkedList<>();
     private int id = 0; //tymczasowo
     private String klasa;
     protected String type;
