@@ -9,16 +9,22 @@ public class TypA extends Samolot
     {
         super(id,model);
         this.zasieg = 9800;
-        this.miejsca = 366;
+        miejscaPierwszaKl = 70;
+        miejscaBiznesowa = 100;
+        miejscaEkonomiczna = 196;
         this.type = "TypA";
     }
-    public void zdejmijMiejsce() {
-        miejsca = miejsca--;
+       public int getMiejscaPierwszaKl() {
+        return miejscaPierwszaKl;
     }
-    public void zwolnijMiejsce() {
-        if (miejsca < 366) {
-            miejsca++;
-        }
+
+    public int getMiejscaBiznesowa() {
+        return miejscaBiznesowa;
+    }
+
+    public int getMiejscaEkonomiczna() {
+        return miejscaEkonomiczna;
+    }
     }
 
 }
