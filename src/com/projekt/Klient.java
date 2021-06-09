@@ -17,6 +17,10 @@ public class Klient
     public void addRezerwacja(Rezerwacja rezerwacja) {
         rezerwacje.add(rezerwacja);
     }
+    
+    public void deleteRezerwacja() {
+        rezerwacje.remove();
+    }
 
     public List<Rezerwacja> getRezerwacje() {
         return rezerwacje;
