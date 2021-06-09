@@ -21,6 +21,6 @@ public class Lotnisko
 
     public String toString()
     {
-        return "Lotnisko " + this.miasto + " " + this.kraj;
+        return this.miasto + " " + this.kraj;
     }
 }

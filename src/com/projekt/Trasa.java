@@ -85,7 +85,7 @@ public class Trasa
 
     public String toString()
     {
-        return "Trasa: " + baza.toString() + " do " + cel.toString() + " " + "Dlugosc: " + dlugosc;
+        return  baza.toString() + " do " + cel.toString() + " " + "Dlugosc: " + dlugosc;
     }
 
     public float getDlugosc() {

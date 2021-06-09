@@ -1,0 +1,8 @@
+LOTNISKA
+Warszawa Polska
+Wenecja Wlochy
+Barcelona Hiszpania
+Split Chorwacja
+TRASY
+Warszawa Polska;Wenecja Wlochy
+Split Chorwacja;Barcelona Hiszpania

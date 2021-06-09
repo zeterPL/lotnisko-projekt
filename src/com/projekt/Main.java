@@ -52,6 +52,8 @@ public class Main {
         LinkedList numeryBiletow = new LinkedList();                               
         Random generator = new Random();                                           
 
+
+
         String nazwaPliku = "ListaMiast.txt";
      //    File plik = new File("ListaMiast.txt");
       //  List<String> miasto = Files.readAllLines(Paths.get("ListaMiast.txt"));
@@ -688,6 +690,99 @@ public class Main {
                                   break;
 
                               case 2: //otwórz
+
+                                  String plik;
+                                  List<String> linia = new LinkedList<>();
+                                  String nazwa = "";
+                                  String slowo = "";
+                                  String tmp="";
+
+                                  System.out.print("Nazwa sciezka do pliku z danymi: ");
+                                  plik = scanner.next();
+
+                                  System.out.println("-------------------------------------");
+                                  System.out.println("Wczytywanie danych z  " + plik);
+                                  System.out.println("-------------------------------------");
+
+
+                                  /*  Wczytywanie  */
+
+                                  Scanner s = new Scanner(new FileInputStream(plik));
+
+
+                                      while (s.hasNextLine()){
+                                          nazwa = s.nextLine();
+
+                                            //TODO DOKONCZYC WARUNEK i IFY
+
+                                              if(nazwa.equals("LOTNISKA"))
+                                              {
+                                                  while (!nazwa.equals("TRASY"))
+                                                  {
+                                                      nazwa = s.nextLine();
+                                                      if(nazwa.equals("TRASY")) {break;}
+                                                    String[] line = nazwa.split(" ");
+                                                    String miasto = line[0];
+                                                    String kraj = line[1];
+                                                   lotniska.add(new Lotnisko(kraj,miasto));
+
+
+                                                  }
+
+                                              }
+                                              if(nazwa.equals("TRASY"))
+                                              {
+                                                  nazwa = s.nextLine();
+                                                  if(nazwa.equals("LOTNISKA")) {break;}
+                                                  String[] line = nazwa.split(";");
+
+                                                  String[] pierwsze = line[0].split(" ");
+                                                  String[] drugie = line[1].split(" ");
+
+                                                  Lotnisko baza=null;
+                                                  Lotnisko cel=null;
+
+
+                                                  for(int i=0;i<lotniska.size();i++)
+                                                  {
+                                                      Lotnisko obecne = lotniska.get(i);
+
+                                                      if(obecne.getMiasto().equals(pierwsze[0]))
+                                                      {
+                                                          baza = lotniska.get(i);
+                                                      }
+                                                      else
+                                                      if(obecne.getMiasto().equals(drugie[0]))
+                                                      {
+                                                          cel = lotniska.get(i);
+                                                      }
+                                                  }
+
+                                                  if(baza!=null && cel!=null)
+                                                  {
+                                                      trasy.add(new Trasa(baza,cel));
+                                                  }
+
+
+
+                                              }
+                                      }
+
+
+
+
+
+
+
+
+
+
+
+                                  System.out.println("-------------------------------------");
+                                  System.out.println("Wczytano dane z  " + plik);
+                                  System.out.println("-------------------------------------");
+
+
                                   break;
 
                               case 3: //wstecz
