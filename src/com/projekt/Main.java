@@ -763,6 +763,9 @@ public class Main {
 
                                   break;
 
+
+                            //zalożenie jest takie, że wszystkie dane zostały wprowadzone w programie i nie ma
+                              // potrzeby sprawdzenia ich poprawności
                               case 2: //otwórz
 
                                   String plik;
@@ -784,66 +787,184 @@ public class Main {
                                   Scanner s = new Scanner(new FileInputStream(plik));
 
 
-                                      while (s.hasNextLine()){
+                                      while (s.hasNextLine()) {
                                           nazwa = s.nextLine();
 
-                                            //TODO DOKONCZYC WARUNEK i IFY
-
-                                              if(nazwa.equals("LOTNISKA"))
-                                              {
-                                                  while (!nazwa.equals("TRASY"))
-                                                  {
-                                                      nazwa = s.nextLine();
-                                                      if(nazwa.equals("TRASY")) {break;}
-                                                    String[] line = nazwa.split(" ");
-                                                    String miasto = line[0];
-                                                    String kraj = line[1];
-                                                   lotniska.add(new Lotnisko(kraj,miasto));
+                                          //TODO DOKONCZYC WARUNEK i IFY
 
 
+                                          if (nazwa.equals("LOTNISKA")) {
+                                              while (!nazwa.equals("TRASY")) {
+                                                  nazwa = s.nextLine();
+                                                  if (nazwa.equals("TRASY")) {
+                                                      break;
                                                   }
+                                                  String[] line = nazwa.split(" ");
+                                                  String miasto = line[0];
+                                                  String kraj = line[1];
+                                                  lotniska.add(new Lotnisko(kraj, miasto));
+
 
                                               }
-                                              if(nazwa.equals("TRASY"))
-                                              {
+
+                                          }
+                                          if (nazwa.equals("LOTNISKA")) {
+                                              while (!nazwa.equals("TRASY")) {
                                                   nazwa = s.nextLine();
-                                                  if(nazwa.equals("LOTNISKA")) {break;}
+                                                  if (nazwa.equals("TRASY")) {
+                                                      break;
+                                                  }
+                                                  String[] line = nazwa.split(" ");
+                                                  String miasto = line[0];
+                                                  String kraj = line[1];
+                                                  lotniska.add(new Lotnisko(kraj, miasto));
+
+
+                                              }
+
+                                          }
+                                          if (nazwa.equals("TRASY")) {
+                                              while (!nazwa.equals("LOTY")) {
+                                                  nazwa = s.nextLine();
+                                                  if (nazwa.equals("SAMOLOTY")) {
+                                                      break;
+                                                  }
                                                   String[] line = nazwa.split(";");
 
                                                   String[] pierwsze = line[0].split(" ");
                                                   String[] drugie = line[1].split(" ");
 
-                                                  Lotnisko baza=null;
-                                                  Lotnisko cel=null;
+                                                  Lotnisko baza = null;
+                                                  Lotnisko cel = null;
 
 
-                                                  for(int i=0;i<lotniska.size();i++)
-                                                  {
+                                                  for (int i = 0; i < lotniska.size(); i++) {
                                                       Lotnisko obecne = lotniska.get(i);
 
-                                                      if(obecne.getMiasto().equals(pierwsze[0]))
-                                                      {
+                                                      if (obecne.getMiasto().equals(pierwsze[0])) {
                                                           baza = lotniska.get(i);
-                                                      }
-                                                      else
-                                                      if(obecne.getMiasto().equals(drugie[0]))
-                                                      {
+                                                      } else if (obecne.getMiasto().equals(drugie[0])) {
                                                           cel = lotniska.get(i);
                                                       }
                                                   }
 
-                                                  if(baza!=null && cel!=null)
-                                                  {
-                                                      trasy.add(new Trasa(baza,cel));
+                                                  if (baza != null && cel != null) {
+                                                      trasy.add(new Trasa(baza, cel));
                                                   }
+                                              }
+
+
+                                          }
+                                          if (nazwa.equals("SAMOLOTY")) {
+                                              while (!nazwa.equals("KLIENCI")) {
+                                                  nazwa = s.nextLine();
+                                                  if (nazwa.equals("KLIENCI") || !s.hasNextLine()) {
+                                                      break;
+                                                  }
+                                                  String[] line = nazwa.split(" ");
+
+                                                  String typ = line[0];
+                                                  String[] dane = line[1].split(";");
+                                                  String model = dane[0];
+                                                  String id = dane[1];
+
+                                                  if (typ.equals("TypA")) {
+                                                      TypA samolot = new TypA(id, model);
+                                                      samoloty.add(samolot);
+                                                  }
+                                                  if (typ.equals("TypB")) {
+                                                      TypB samolot = new TypB(id, model);
+                                                      samoloty.add(samolot);
+                                                  }
+                                                  if (typ.equals("TypC")) {
+                                                      TypC samolot = new TypC(id, model);
+                                                      samoloty.add(samolot);
+                                                  }
+                                                  if (typ.equals("TypD")) {
+                                                      TypD samolot = new TypD(id, model);
+                                                      samoloty.add(samolot);
+                                                  }
+
+                                              }
+
+                                          }
+                                          if (nazwa.equals("KLIENCI")) {
+                                              while (!nazwa.equals("LOTY")) {
+                                                  nazwa = s.nextLine();
+                                                  if (nazwa.equals("LOTY") || !s.hasNextLine()) {
+                                                      break;
+                                                  }
+                                                  String[] line = nazwa.split(";");
+                                                  String typ = line[0];
+                                                  if(typ.equals("Osoba") || typ.equals("OsobaVip"))
+                                                  {
+                                                      String[] dane = line[1].split(" ");
+                                                      String imie = dane[0];
+                                                      String nazwisko = dane[1];
+                                                      if(typ.equals("Osoba")) { klienci.add(new Osoba(imie,nazwisko)); }
+                                                      if(typ.equals("OsobaVip")) { klienci.add(new OsobaVip(imie,nazwisko)); }
+
+                                                  }
+                                                  else if(typ.equals("Posrednik") || typ.equals("Korporacja"))
+                                                  {
+                                                      String nazwaFirmy = line[1];
+                                                      if(typ.equals("Posrednik")) { klienci.add(new Posrednik(nazwaFirmy)); }
+                                                      if(typ.equals("Korporacja")) { klienci.add(new Korpo(nazwaFirmy)); }
+                                                  }
+
+
+                                              }
+
+                                          }
+                                          if (nazwa.equals("LOTY")) {
+                                              while (!nazwa.equals("KONIEC")) {
+                                                  nazwa = s.nextLine();
+                                                  if (nazwa.equals("KONIEC")) {
+                                                      break;
+                                                  }
+                                                  String[] line = nazwa.split("#");
+                                                  String trasa = line[0];
+
+                                                  String[] trasaDane = trasa.split(";");
+                                                  String[] lotniskoOD = trasaDane[0].split(" ");
+                                                  String[] lotniskDO = trasaDane[1].split(" ");
+
+                                                  String miastoOD = lotniskoOD[0];
+                                                  String miastoDO = lotniskDO[0];
+
+                                                  String[] samolotDane = line[1].split(";");
+                                                  String samolotID = samolotDane[1];
+                                                  Samolot samolot =null;
+                                                  Trasa trasa1=null;
+
+                                                  for(int i=0;i< samoloty.size(); i++)
+                                                  {
+                                                      if(samoloty.get(i).getId().equals(samolotID))
+                                                      {
+                                                          samolot = samoloty.get(i);
+                                                      }
+                                                  }
+                                                  for(int i=0;i< trasy.size(); i++)
+                                                  {
+                                                      if(trasy.get(i).getBaza().getMiasto().equals(miastoOD) &&
+                                                              trasy.get(i).getCel().getMiasto().equals(miastoDO))
+                                                      {
+                                                         trasa1 = trasy.get(i);
+                                                      }
+                                                  }
+                                                  Lot lot = new Lot();
+                                                 lot.setSamolot(samolot);
+                                                 lot.setTrasa(trasa1);
+                                                 loty.add(lot);
 
 
 
                                               }
+
+                                          }
+
+
                                       }
-
-
-
 
 
 

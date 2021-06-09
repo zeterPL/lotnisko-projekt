@@ -39,7 +39,7 @@ public class Samolot
 
     public int getZasieg() { return zasieg; }
 
-    public String toString() { return "Samolot: " + model + " " + " ID: " + id; }
+    public String toString() { return model + " " + " ID: " + id; }
 
     public int getMnoznikPierwszaKl() { return mnoznikPierwszaKl; }
 

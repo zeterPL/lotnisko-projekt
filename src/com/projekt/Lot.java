@@ -15,7 +15,7 @@ public class Lot
     public Lot()
     {
         klienci = new LinkedList<>();
-        gPodroz = trasa.getDlugosc()/800; //800km/h prędkość
+
     }
 
     public Samolot getSamolot() {
@@ -34,6 +34,7 @@ public class Lot
 
     public void setTrasa(Trasa trasa) {
         this.trasa = trasa;
+        gPodroz = trasa.getDlugosc()/800; //800km/h prędkość
     }
 
     public Trasa getTrasa() {

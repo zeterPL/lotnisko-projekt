@@ -91,4 +91,12 @@ public class Trasa
     public float getDlugosc() {
         return dlugosc;
     }
+
+    public Lotnisko getBaza() {
+        return baza;
+    }
+
+    public Lotnisko getCel() {
+        return cel;
+    }
 }

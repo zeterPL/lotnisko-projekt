@@ -1,8 +1,8 @@
 package com.projekt;
 
 public class Bilet {
-    private float cena;
+    private double cena;
     private int nrMiejsca;
 
-    public Bilet(float cena, int nrMiejsca) { this.cena = cena; this.nrMiejsca = nrMiejsca; }
+    public Bilet(double cena, int nrMiejsca) { this.cena = cena; this.nrMiejsca = nrMiejsca; }
 }

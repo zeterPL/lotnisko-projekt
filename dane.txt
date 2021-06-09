@@ -6,3 +6,29 @@ Split Chorwacja
 TRASY
 Warszawa Polska;Wenecja Wlochy
 Split Chorwacja;Barcelona Hiszpania
+Wenecja Wlochy;Barcelona Hiszpania
+Warszawa Polska;Split Chorwacja
+SAMOLOTY
+TypA Airbus;SDF34T
+TypB Boeing;NDDH98
+TypC Embraer;HSD00D
+TypD McDonnell;TK0VH9
+KLIENCI
+Osoba;Jan Kowalski
+Osoba;Rafal Kaminski
+Osoba;Jacek Zbik
+OsobaVip;Janusz Gorski
+OsobaVip;Danuta Wipowska
+OsobaVip;Daniel Wipowski
+Posrednik;SuperFirma
+Posrednik;FirmaJakas
+Posrednik;MalaFirma
+Korporacja;MegaSuperFirma
+Korporacja;TakaSuperFirmaZeNieWiemJakNazwac
+LOTY
+Split Chorwacja;Barcelona Hiszpania#TypC Embraer;HSD00D
+Wenecja Wlochy;Barcelona Hiszpania#TypD McDonnell;TK0VH9
+Warszawa Polska;Split Chorwacja#TypA Airbus;SDF34T
+KONIEC
+
+
