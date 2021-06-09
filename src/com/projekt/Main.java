@@ -396,11 +396,17 @@ public class Main {
                                       System.out.print("Wybor:  ");
                                       int in = scanner.nextInt();
 
-                                      System.out.println("1. Zwykly lot ");
-                                      System.out.println("2. Cotygodniowy lot");
-                                      System.out.println("3. Codzienny lot");
-                                      System.out.print("Wybor:  ");
-                                      int rodzaj = scanner.nextInt();
+                                      int rodzaj;
+
+                                      do {
+                                          System.out.println("1. Zwykly lot ");
+                                          System.out.println("2. Cotygodniowy lot");
+                                          System.out.println("3. Codzienny lot");
+                                          System.out.print("Wybor:  ");
+                                          rodzaj = scanner.nextInt();
+                                      }while (rodzaj!=1 && rodzaj!=2 && rodzaj!=3);
+
+
 
                                       if(rodzaj!=1 && rodzaj!=2 && rodzaj!=3) { System.out.println("\nBłAD\n"); break; }
                                       else if(rodzaj == 1)
@@ -562,8 +568,11 @@ public class Main {
                                 if(loty.size() < 1) {System.out.println("Brak lotow"); break; }
                                 System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
                                 System.out.println("-------------------------------------");
+                                int k=0;
                                 for (Lot lot : loty) {
-                                    System.out.println(i + 1 + ". " + lot.toString());
+
+                                    System.out.println(k + 1 + ". " + lot.toString());
+                                    k++;
                                 }
                                 System.out.println("-------------------------------------");
                                 int f = scanner.nextInt(); //numer lotu
@@ -662,6 +671,7 @@ public class Main {
                                 int nrlotu = scanner.nextInt(); //numer lotu
 
                                 System.out.println("Wybierz numer klienta: ");
+
 
                                 for (int i = 0; i < loty.get(nrlotu - 1).getKlienci().size(); i++) {
                                     System.out.println(i + 1 + ". " + loty.get(nrlotu - 1).getKlienci().toString());
