@@ -1,7 +1,9 @@
 package com.projekt;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.*;
@@ -17,7 +19,17 @@ public class Trasa
 
         String poczatek  = baza.getMiasto();
         String koniec = cel.getMiasto();
-        List<String> miasta = Files.readAllLines(Paths.get("ListaMiast.txt"));
+
+        List<String> miasta = new LinkedList<>(); //inicjalizacja listy
+        try
+        {
+            miasta = Files.readAllLines(Paths.get("ListaMiast.txt"));
+        }
+        catch (NoSuchFileException exception) //jak nie ma pliku to łapie wyjątek
+        {
+            System.out.println("\nBlad bazy danych!!\n");
+        }
+
         int indeksPoczatku=0, indeksKonca=0; //domyslna wartosc 0 zeby sie kompilowało
         for (int i = 0; i < miasta.size(); i++)
         {

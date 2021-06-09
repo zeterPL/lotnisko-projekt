@@ -111,22 +111,36 @@ public class Main {
                           switch (w2) {
 
                               case 1: //                        dodaj klienta
-                                  int w3;
+                                  int w3=0;
                                   do {
                                       System.out.println("1. Firma");
                                       System.out.println("2. Osoba prywatna");
                                       System.out.println("3. Wstecz");
                                       System.out.println("Opcja: ");
-                                      w3 = scanner.nextInt();
+                                      try
+                                      {
+                                          w3 = scanner.nextInt();
+                                      }
+                                      catch (InputMismatchException a)
+                                      {
+                                          System.out.println("\nPodaj numer opcji do wykonania!\n");
+                                      }
 
                                       if (w3 == 1) {
-                                          int w4;
+                                          int w4=0;
 
                                           do {
                                               System.out.println("1. Posrednik");
                                               System.out.println("2. Korporacja");
                                               System.out.print("Opcja: ");
-                                              w4 = scanner.nextInt();
+                                              try
+                                              {
+                                                  w4 = scanner.nextInt();
+                                              }
+                                              catch (InputMismatchException a)
+                                              {
+                                                  System.out.println("\nPodaj numer opcji do wykonania!\n");
+                                              }
                                           } while (w4 != 1 && w4 != 2);
 
                                           System.out.print("Nazwa: ");
@@ -139,12 +153,19 @@ public class Main {
                                               klienci.add(new Korpo(nazwa));
                                           }
                                       } else if (w3 == 2) {
-                                          int w4;
+                                          int w4=0;
                                           do {
                                               System.out.println("1. Zwykla osoba");
                                               System.out.println("2. VIP");
                                               System.out.print("Opcja: ");
-                                              w4 = scanner.nextInt();
+                                              try
+                                              {
+                                                  w4 = scanner.nextInt();
+                                              }
+                                              catch (InputMismatchException a)
+                                              {
+                                                  System.out.println("\nPodaj numer opcji do wykonania!\n");
+                                              }
                                           } while (w4 != 1 && w4 != 2);
 
                                           System.out.print("Imie: ");
@@ -581,7 +602,7 @@ public class Main {
                        */
 
 
-                      int wybor;
+                      int wybor=0;
 
                       do
                       {
@@ -590,7 +611,14 @@ public class Main {
                           System.out.println("2. Otwórz dane z pliku txt");
                           System.out.println("3. Wstecz");
                           System.out.print("Opcja: ");
-                          wybor = scanner.nextInt();
+                          try
+                          {
+                              wybor = scanner.nextInt();
+                          }
+                          catch (InputMismatchException aa)
+                          {
+                              System.out.println("\nPodaj numer opcji do wykonania!\n");
+                          }
 
                           switch (wybor)
                           {
