@@ -9,13 +9,15 @@ public class Lot
     private Samolot samolot;
     private Trasa trasa;
 
+    protected String type;
+
 
     private float gPodroz; //czas podróży
 
     public Lot()
     {
         klienci = new LinkedList<>();
-
+        this.type="";
     }
 
     public Samolot getSamolot() {

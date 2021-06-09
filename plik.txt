@@ -1,7 +1,38 @@
-KLIENCI
-REZERWACJE
-TRASY
-LOTY
 LOTNISKA
-Lotnisko Wlochy Wenecja
-Lotnisko Bialystok Polska
+Warszawa Polska
+Wenecja Wlochy
+Barcelona Hiszpania
+Split Chorwacja
+Tstowe Test
+TRASY
+Warszawa Polska;Wenecja Wlochy
+Split Chorwacja;Barcelona Hiszpania
+Wenecja Wlochy;Barcelona Hiszpania
+Warszawa Polska;Split Chorwacja
+Tstowe Test;Barcelona Hiszpania
+Wenecja Wlochy;Warszawa Polska
+SAMOLOTY
+TypA Airbus;SDF34T
+TypB Boeing;NDDH98
+TypC Embraer;HSD00D
+TypD McDonnell;TK0VH9
+TypA Testowy;samolot
+KLIENCI
+Osoba;Osoba Testowa
+Osoba;Jan Kowalski
+Osoba;Rafal Kaminski
+Osoba;Jacek Zbik
+OsobaVip;Janusz Gorski
+OsobaVip;Danuta Wipowska
+OsobaVip;Daniel Wipowski
+Posrednik;SuperFirma
+Posrednik;FirmaJakas
+Posrednik;MalaFirma
+Korporacja;MegaSuperFirma
+Korporacja;TakaSuperFirmaZeNieWiemJakNazwac
+LOTY
+CT!Split Chorwacja;Barcelona Hiszpania#TypC Embraer;HSD00D
+!Wenecja Wlochy;Barcelona Hiszpania#TypD McDonnell;TK0VH9
+CD!Warszawa Polska;Split Chorwacja#TypA Airbus;SDF34T
+!Warszawa Polska;Split Chorwacja#TypA Testowy;samolot
+KONIEC

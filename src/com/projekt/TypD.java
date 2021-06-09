@@ -2,7 +2,7 @@ package com.projekt;
 
 public class TypD extends Samolot
 {
-    public String type;
+
     public TypD(String id, String model)
     {
         super(id,model);

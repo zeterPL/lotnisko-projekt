@@ -26,9 +26,7 @@ Posrednik;MalaFirma
 Korporacja;MegaSuperFirma
 Korporacja;TakaSuperFirmaZeNieWiemJakNazwac
 LOTY
-Split Chorwacja;Barcelona Hiszpania#TypC Embraer;HSD00D
-Wenecja Wlochy;Barcelona Hiszpania#TypD McDonnell;TK0VH9
-Warszawa Polska;Split Chorwacja#TypA Airbus;SDF34T
+CT!Split Chorwacja;Barcelona Hiszpania#TypC Embraer;HSD00D
+!Wenecja Wlochy;Barcelona Hiszpania#TypD McDonnell;TK0VH9
+CD!Warszawa Polska;Split Chorwacja#TypA Airbus;SDF34T
 KONIEC
-
-

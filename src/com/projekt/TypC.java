@@ -3,7 +3,7 @@ package com.projekt;
 public class TypC extends Samolot
 {
 
-    public String type;
+
     public TypC(String id, String model)
     {
         super(id,model);

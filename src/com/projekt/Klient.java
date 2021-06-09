@@ -8,6 +8,7 @@ public class Klient
     private List<Rezerwacja> rezerwacje;
     private int id = 0; //tymczasowo
     private String klasa;
+    protected String type;
 
     public Klient() {
         rezerwacje = new LinkedList<>();

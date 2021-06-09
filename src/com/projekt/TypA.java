@@ -3,7 +3,7 @@ package com.projekt;
 public class TypA extends Samolot
 {
 
-    public String type;
+
 
     public TypA(String id, String model)
     {

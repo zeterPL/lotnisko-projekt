@@ -4,6 +4,7 @@ public class Samolot
 {
     private String model;
     private String id;
+    public String type;
 
     protected int miejscaPierwszaKl;
     protected int miejscaBiznesowa;
@@ -18,6 +19,8 @@ public class Samolot
     public Samolot(String id, String model) { this.id = id; this.model = model; }
 
     public String getId() { return id; }
+
+    public String getModel() { return model; }
 
     public void zarezerwujMiejscePierwszaKl() { miejscaPierwszaKl = miejscaPierwszaKl--; }
 

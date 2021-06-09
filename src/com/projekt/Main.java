@@ -409,10 +409,40 @@ public class Main {
                                       System.out.print("Wybor:  ");
                                       int in = scanner.nextInt();
 
-                                      Lot lot = new Lot();
-                                      lot.setTrasa(t);
-                                      lot.setSamolot(samoloty.get(in-1));
-                                      loty.add(lot);
+                                      System.out.println("1. Zwykly lot ");
+                                      System.out.println("2. Cotygodniowy lot");
+                                      System.out.println("3. Codzienny lot");
+                                      System.out.print("Wybor:  ");
+                                      int rodzaj = scanner.nextInt();
+
+                                      if(rodzaj!=1 && rodzaj!=2 && rodzaj!=3) { System.out.println("\nBłAD\n"); break; }
+                                      else if(rodzaj == 1)
+                                      {
+                                          Lot lot = new Lot();
+                                          lot.setTrasa(t);
+                                          lot.setSamolot(samoloty.get(in-1));
+                                          loty.add(lot);
+                                          break;
+                                      }
+                                      else if(rodzaj==2)
+                                      {
+                                          LotCotygodniowy lot = new LotCotygodniowy();
+                                          lot.setTrasa(t);
+                                          lot.setSamolot(samoloty.get(in-1));
+                                          loty.add(lot);
+                                          break;
+                                      }
+                                      else if(rodzaj == 3)
+                                      {
+                                          LotCodzienny lot = new LotCodzienny();
+                                          lot.setTrasa(t);
+                                          lot.setSamolot(samoloty.get(in-1));
+                                          loty.add(lot);
+                                          break;
+                                      }
+
+
+
 
                                   }
 
@@ -703,7 +733,7 @@ public class Main {
 
 
                                   if(trasy.size() == 0 && loty.size() == 0 && lotniska.size() == 0
-                                          && samoloty.size() == 0 && klienci.size() == 0 && rezerwacje.size() == 0)
+                                          && samoloty.size() == 0 && klienci.size() == 0 )
                                   {
                                       System.out.println("\nBrak danych w systemie!\n");
                                       break;
@@ -713,46 +743,61 @@ public class Main {
                                       System.out.print("Podaj nazwe i sciezke do pliku : ");
                                       String sciezkaPlik = scanner.next();
 
+
                                       PrintWriter zapis = new PrintWriter(sciezkaPlik);
-
-                                      //klienci
-                                      zapis.println("KLIENCI");
-
-
-
-                                      //rezerwacje
-                                      zapis.println("REZERWACJE");
-
-                                      //trasy
-                                      zapis.println("TRASY");
-                                      for (int i=0; i< trasy.size(); i++)
-                                      {
-                                          zapis.println(trasy.get(i).toString());
-                                      }
-
-                                      //loty
-                                      zapis.println("LOTY");
-                                      for (int i=0; i< loty.size(); i++)
-                                      {
-                                          Lot obecny = loty.get(i);
-                                          List<Klient> k =obecny.getKlienci();
-                                          zapis.println(obecny.getTrasa().toString() + " " + obecny.getSamolot().toString() + " "
-                                                  + obecny.getgPodroz());
-
-                                          for(int j=0;j<k.size();j++)
-                                          {
-                                              System.out.println(k.get(i).getId() + k.get(i).toString());
-                                          }
-
-                                      }
 
                                       //lotniska
                                       zapis.println("LOTNISKA");
+
                                       for(int i=0; i< lotniska.size(); i++)
                                       {
                                           zapis.println(lotniska.get(i).toString());
                                       }
 
+                                      //trasy
+                                      zapis.println("TRASY");
+
+                                      for(int i=0; i< trasy.size(); i++)
+                                      {
+                                          zapis.println(trasy.get(i).getBaza().toString() +
+                                                ";" + trasy.get(i).getCel().toString());
+
+                                      }
+
+
+                                      //samoloty
+                                      zapis.println("SAMOLOTY");
+
+                                      for(int i=0; i< samoloty.size(); i++)
+                                      {
+                                          Samolot obecny = samoloty.get(i);
+                                         zapis.println(obecny.type + " " + obecny.getModel() + ";" +
+                                                  obecny.getId());
+
+                                      }
+
+                                      //klienci
+                                      zapis.println("KLIENCI");
+
+                                      for(int i=0; i< klienci.size(); i++)
+                                      {
+                                            zapis.println(klienci.get(i).type+";"+klienci.get(i).toString());
+
+                                      }
+
+                                      //loty
+                                      zapis.println("LOTY");
+                                      for(int i=0; i< loty.size(); i++)
+                                      {
+                                          zapis.println(loty.get(i).type+"!"+loty.get(i).getTrasa().getBaza().toString()
+                                          + ";" + loty.get(i).getTrasa().getCel().toString()+"#"+loty.get(i).getSamolot().type
+                                          +" "+loty.get(i).getSamolot().getModel()+";"+loty.get(i).getSamolot().getId());
+
+                                      }
+
+
+                                      //koniec EOF
+                                      zapis.println("KONIEC");
                                       zapis.close();
 
                                       System.out.println("-------------------------------------");
@@ -780,7 +825,6 @@ public class Main {
                                   System.out.println("-------------------------------------");
                                   System.out.println("Wczytywanie danych z  " + plik);
                                   System.out.println("-------------------------------------");
-
 
                                   /*  Wczytywanie  */
 
@@ -926,7 +970,10 @@ public class Main {
                                                   String trasa = line[0];
 
                                                   String[] trasaDane = trasa.split(";");
-                                                  String[] lotniskoOD = trasaDane[0].split(" ");
+                                                  String[] trasaDane2 = trasaDane[0].split("!");
+                                                  String typ = trasaDane2[0];
+
+                                                  String[] lotniskoOD = trasaDane2[1].split(" ");
                                                   String[] lotniskDO = trasaDane[1].split(" ");
 
                                                   String miastoOD = lotniskoOD[0];
@@ -952,10 +999,28 @@ public class Main {
                                                          trasa1 = trasy.get(i);
                                                       }
                                                   }
-                                                  Lot lot = new Lot();
-                                                 lot.setSamolot(samolot);
-                                                 lot.setTrasa(trasa1);
-                                                 loty.add(lot);
+                                                  if(typ.equals("CT"))
+                                                  {
+                                                      LotCotygodniowy lct = new LotCotygodniowy();
+                                                      lct.setSamolot(samolot);
+                                                      lct.setTrasa(trasa1);
+                                                      loty.add(lct);
+                                                  }
+                                                  else if(typ.equals("CD"))
+                                                  {
+                                                      LotCodzienny lcd = new LotCodzienny();
+                                                      lcd.setSamolot(samolot);
+                                                      lcd.setTrasa(trasa1);
+                                                      loty.add(lcd);
+                                                  }
+                                                  else
+                                                  {
+                                                      Lot lot = new Lot();
+                                                      lot.setSamolot(samolot);
+                                                      lot.setTrasa(trasa1);
+                                                      loty.add(lot);
+                                                  }
+
 
 
 
