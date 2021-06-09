@@ -36,6 +36,9 @@ public class Lot
     public void setSamolot(Samolot samolot) {
         this.samolot = samolot;
     }
+    public Klient getKlient(int x) {
+        return klienci.get(x);
+    }
 
     public void setTrasa(Trasa trasa) {
         this.trasa = trasa;
