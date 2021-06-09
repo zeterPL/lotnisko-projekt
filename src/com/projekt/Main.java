@@ -535,7 +535,7 @@ public class Main {
 
                       break;
 
-                  case 6:
+                  case 6:     ////////////////////////REZERWACJE////////////////////////////
                     int a = 0;
                     do {
                         System.out.println("1. Dodaj nową rezerwację. ");
@@ -544,11 +544,11 @@ public class Main {
                         System.out.println("4. Wstecz.");
                         System.out.println("Wybor: ");
 
-                        try 
+                        try
                         {
                             a = scanner.nextInt();
-                        } 
-                        catch (InputMismatchException ex) 
+                        }
+                        catch (InputMismatchException ex)
                         {
                             System.out.println("\nPodaj właściwy numer opcji do wykonania!\n");
                         }
@@ -645,7 +645,7 @@ public class Main {
 
                                 System.out.println("Cena biletu wynosi " + cenaBiletu + "zł");
                                 loty.get(f-1).addKlient(klienci.get(q-1)); //dodany klient do lotu
-                                bilety.add(new Bilet(cenaBiletu, nrMiejsca)); //dodany nowy bilet do listy
+                                bilety.add(new Bilet(cenaBiletu, nrMiejsca, numerBiletu)); //dodany nowy bilet do listy
                                 rezerwacje.add(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana nowa rezerwacja do listy
                                 klienci.get(q - 1).addRezerwacja(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana rezerwacja do klienta
                                 break;
@@ -681,14 +681,23 @@ public class Main {
                                 }    //zwalnianie miejsca w odpowiedniej klasie
                                 loty.get(nrlotu - 1).getKlienci().remove(nrklienta - 1); //usuwanie klienta z lotu
 
-
+                                loty.get(nrlotu - 1).getKlient(nrklienta - 1).deleteRezerwacja(); //usuwanie rezerwacji u klienta
+                                for (int i = 0; i < bilety.size(); i++) {
+                                    for (int j = 0; j < rezerwacje.size(); j++) {
+                                        if (bilety.get(i).getId() == rezerwacje.get(j).getBilet().getId()) {
+                                            bilety.remove(i); //usuwanie biletu z listy biletow
+                                            rezerwacje.remove(j); //usuwanie rezerwacji z listy rezerwacji
+                                        }
+                                    }
+                                }
                         }
                         //
                         break;
 
                     } while (a != 4);
 
-                      break;
+                    break;
+
 
                   case 7: //                               zapisz lub otwórz stan systemu
 
