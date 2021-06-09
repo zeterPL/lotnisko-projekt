@@ -34,6 +34,7 @@ public class Klient
     {
         return "";
     }
+
     public void setKlasa(int x) {
         if (x == 1) {
             klasa = "Pierwsza";

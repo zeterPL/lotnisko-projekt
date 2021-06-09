@@ -7,11 +7,6 @@ import java.io.*;
 
 public class Main {
 
-    //TODO UWAGA: W implementacji programu należy OBOWIĄZKOWO wykorzystać i opisać przynajmniej
-    // jedną bibliotekę użytego języka programowania opisaną w jego dokumentacji technicznej
-    // w języku angielskim (EU5).
-
-
     //maksymalna liczba opcji programu
     public static int liczbaOpcji = 8;
 
@@ -434,10 +429,8 @@ public class Main {
                                       }
 
 
-
-
                                   }
-
+                                    break;
 
                               case 2:   //anuluj lot
                                   System.out.println("------ Lista wszystkich dostępnych lotów: ------"); //zrobione
@@ -806,13 +799,25 @@ public class Main {
                                   System.out.print("Nazwa sciezka do pliku z danymi: ");
                                   plik = scanner.next();
 
+
+
                                   System.out.println("-------------------------------------");
                                   System.out.println("Wczytywanie danych z  " + plik);
                                   System.out.println("-------------------------------------");
 
                                   /*  Wczytywanie  */
+                                  Scanner s;
 
-                                  Scanner s = new Scanner(new FileInputStream(plik));
+                                  try
+                                  {
+                                       s = new Scanner(new FileInputStream(plik));
+                                  }
+                                  catch (FileNotFoundException ef)
+                                  {
+                                      System.out.println("\nBlad! Brak takiego pliku!\n");
+                                      break;
+                                  }
+
 
 
                                       while (s.hasNextLine()) {
