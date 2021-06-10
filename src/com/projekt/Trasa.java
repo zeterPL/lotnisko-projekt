@@ -49,11 +49,7 @@ public class Trasa
 
         //tymczasowo
         this.dlugosc = 10000;
-        // CZY odleglosc nie moze byc z tego pliku, do ktorego wpisalem tych ponad 50 miast?
-//        System.out.println("PODAJ NAZWE PLIKU CSV BEZ ROZSZERZENIA: ");
- //       Scanner czytamZKlawiatury = new Scanner(System.in); //USER MA PODAC NAZWE PLIKU
-        String nazwaPliku; 					// NAZWA PLIKU TO CIAG ZNAKOW, WIEC STRING
- //       nazwaPliku = czytamZKlawiatury.nextLine(); //NAZWA PLIKU PODAJE Z KLAWIATURY
+        String nazwaPliku;
         nazwaPliku = "macierzOdleglosci.csv";
 
         int[][] tablicaOdleglosci = new int [miasta.size()][miasta.size()];
