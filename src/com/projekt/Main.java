@@ -935,7 +935,7 @@ public class Main {
 
                                           }
                                           if (nazwa.equals("TRASY")) {
-                                              while (!nazwa.equals("LOTY")) {
+                                              while (!nazwa.equals("SAMOLOTY")) {
                                                   nazwa = s.nextLine();
                                                   if (nazwa.equals("SAMOLOTY")) {
                                                       break;
