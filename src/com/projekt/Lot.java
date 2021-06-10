@@ -43,7 +43,7 @@ public class Lot
     public void setTrasa(Trasa trasa) {
         this.trasa = trasa;
         LocalDateTime teraz = LocalDateTime.now();
-        gPodroz = trasa.getDlugosc()/800; //800km/h prędkość
+        gPodroz = trasa.getDlugosc()/800; //800km/h to PREDKOSC SAMOLOTOW
         LocalDateTime gPowrot = teraz.plusHours((long)gPodroz);
 
         DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
