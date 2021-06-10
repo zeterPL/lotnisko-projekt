@@ -40,7 +40,7 @@ public class Main {
         List<Lot> loty = new LinkedList<>();
         List<Rezerwacja> rezerwacje = new LinkedList<>();
         //List <String> listaMiast = new ArrayList<>();
-        LinkedList numeryBiletow = new LinkedList();                               
+        LinkedList numeryBiletow = new LinkedList();
         Random generator = new Random(); 
         List <Bilet> bilety = new LinkedList<>();                                          
 
@@ -554,8 +554,9 @@ public class Main {
 
 
                         switch(a) {
-                            case 1:
+                            case 1:                 //dadawanie rezerwacji
                                 if(klienci.size() < 1) {System.out.println("Brak klientow"); break; }
+
                                 System.out.println("Wybierz klienta rezerwującego lot: ");
                                 System.out.println("-------------------------------------");
                                 for (int i = 0; i < klienci.size(); i++) {
@@ -568,6 +569,7 @@ public class Main {
                                 if(loty.size() < 1) {System.out.println("Brak lotow"); break; }
                                 System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
                                 System.out.println("-------------------------------------");
+
                                 int k=0;
                                 for (Lot lot : loty) {
 
@@ -579,8 +581,28 @@ public class Main {
 
                                 int numerBiletu = generator.nextInt(41000);
 
-                                Iterator it = numeryBiletow.iterator();
+                               // Iterator it = numeryBiletow.iterator();
                                 boolean istniejeNumer = true;
+
+                                if(bilety.size()!=0)
+                                {
+                                    for(int i=0;i<=bilety.size();i++)
+                                    {
+                                        if(bilety.get(i).getId()==numerBiletu)
+                                        {
+                                            numerBiletu = generator.nextInt(41000);
+                                        }
+                                        else
+                                        {
+                                            istniejeNumer=false;
+                                        }
+                                    }
+
+                                }
+
+
+
+/*
                                 while(istniejeNumer) {
                                     for (Object o : numeryBiletow) {
                                         if (o.equals(numerBiletu)) {
@@ -591,8 +613,10 @@ public class Main {
                                         }
                                     }
                                 }
+
+ */
                                 System.out.println("Twój numer biletu: " + numerBiletu);
-                                System.out.println(numerBiletu);
+                                //System.out.println(numerBiletu);
 
                                 int wyborKlasy = 0;
                                 boolean wyborKlasyOk = false;
@@ -659,7 +683,13 @@ public class Main {
                                 System.out.println("----------------------------------");
                                 int d = scanner.nextInt();
 
-                                System.out.println(loty.get(d - 1).getKlienci().toString());
+                                if(loty.get(d-1).getKlienci().size()==0)
+                                {
+                                    System.out.println("Brak rezerwacji na ten lot");
+                                    break;
+                                }
+                                else {System.out.println(loty.get(d - 1).getKlienci().toString()); }
+
                                 break;
                             case 3:
                                 System.out.println("Wybierz numer lotu na którym chcesz usunąć rezerwację: ");
