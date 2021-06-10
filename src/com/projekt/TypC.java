@@ -9,8 +9,14 @@ public class TypC extends Samolot
         super(id,model);
         this.zasieg = 17370;
         this.miejscaPierwszaKl = 100;
+        this.miejscaPierwszaKlmax = 100;
+
         this.miejscaBiznesowa = 130;
+        this.miejscaBiznesowaMax = 130;
+
         this.miejscaEkonomiczna = 220;
+        this.miejscaEkonomicznaMax = 220;
+
         this.type = "TypC";
     }
     public void zarezerwujMiejscePierwszaKl() {
@@ -47,4 +53,8 @@ public class TypC extends Samolot
     public int getMiejscaEkonomiczna() {
         return miejscaEkonomiczna;
     }
+
+    public int getMiejscaPierwszaKlMax() { return miejscaPierwszaKlmax; }
+    public int getMiejscaBiznesowaMax() { return miejscaBiznesowaMax; }
+    public int getMiejscaEkonomicznaMax() { return miejscaEkonomicznaMax; }
 }

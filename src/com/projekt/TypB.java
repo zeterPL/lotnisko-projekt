@@ -8,8 +8,13 @@ public class TypB extends Samolot
         super(id,model);
         this.zasieg = 15900;
         this.miejscaPierwszaKl = 80;
+        this.miejscaPierwszaKlmax = 80;
+
         this.miejscaBiznesowa = 90;
+        this.miejscaBiznesowaMax = 90;
+
         this.miejscaEkonomiczna = 210;
+        this.miejscaEkonomicznaMax = 210;
         this.type = "TypB";
     }
     public void zarezerwujMiejscePierwszaKl() {
@@ -46,4 +51,8 @@ public class TypB extends Samolot
     public int getMiejscaEkonomiczna() {
         return miejscaEkonomiczna;
     }
+
+    public int getMiejscaPierwszaKlMax() { return miejscaPierwszaKlmax; }
+    public int getMiejscaBiznesowaMax() { return miejscaBiznesowaMax; }
+    public int getMiejscaEkonomicznaMax() { return miejscaEkonomicznaMax; }
 }

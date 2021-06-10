@@ -7,8 +7,13 @@ public class Samolot
     protected String type;
 
     protected int miejscaPierwszaKl;
+    protected int miejscaPierwszaKlmax;
+
     protected int miejscaBiznesowa;
+    protected int miejscaBiznesowaMax;
+
     protected int miejscaEkonomiczna;
+    protected int miejscaEkonomicznaMax;
 
     protected int zasieg;
 
@@ -49,4 +54,8 @@ public class Samolot
     public double getMnoznikBiznesowa() { return mnoznikBiznesowa; }
 
     public double getMnoznikEkonomiczna() { return mnoznikEkonomiczna; }
+
+    public int getMiejscaPierwszaKlMax() { return miejscaPierwszaKlmax; }
+    public int getMiejscaBiznesowaMax() { return miejscaBiznesowaMax; }
+    public int getMiejscaEkonomicznaMax() { return miejscaEkonomicznaMax; }
 }
