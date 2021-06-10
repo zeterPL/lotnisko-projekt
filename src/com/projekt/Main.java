@@ -40,7 +40,7 @@ public class Main {
         List<Lot> loty = new LinkedList<>();
         List<Rezerwacja> rezerwacje = new LinkedList<>();
         //List <String> listaMiast = new ArrayList<>();
-        LinkedList numeryBiletow = new LinkedList();
+       // LinkedList numeryBiletow = new LinkedList();
         Random generator = new Random(); 
         List <Bilet> bilety = new LinkedList<>();                                          
 
@@ -461,6 +461,7 @@ public class Main {
                                   break;
                           }
                       } while(x!=3);
+                      break;
 
                   case 5:
                       int z=0;                                  //trasy
