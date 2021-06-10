@@ -40,7 +40,7 @@ public class Main {
         List<Lot> loty = new LinkedList<>();
         List<Rezerwacja> rezerwacje = new LinkedList<>();
         //List <String> listaMiast = new ArrayList<>();
-       // LinkedList numeryBiletow = new LinkedList();
+        LinkedList numeryBiletow = new LinkedList();
         Random generator = new Random(); 
         List <Bilet> bilety = new LinkedList<>();                                          
 
@@ -461,7 +461,6 @@ public class Main {
                                   break;
                           }
                       } while(x!=3);
-                      break;
 
                   case 5:
                       int z=0;                                  //trasy
@@ -710,9 +709,30 @@ public class Main {
                                 int nrklienta = scanner.nextInt(); //numer klienta z lotu(ale nie id)
 
                                 switch (loty.get(nrlotu - 1).getKlient(nrklienta - 1).getKlasa()) {
-                                    case "Biznesowa" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceBiznesowa();
-                                    case "Ekonomiczna" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceEkonomiczna();
-                                    case "Pierwsza" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejscePierwszaKl();
+                                    case "Biznesowa" -> {
+                                        if (loty.get(nrlotu - 1).getSamolot().getMiejscaBiznesowa() <
+                                                loty.get(nrlotu - 1).getSamolot().getMiejscaBiznesowaMax()) {
+                                            loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceBiznesowa();
+                                        } else {
+                                            System.out.println("Maksymalna ilosc miejsc");
+                                        }
+                                    }
+                                    case "Ekonomiczna" -> {
+                                        if (loty.get(nrlotu - 1).getSamolot().getMiejscaEkonomiczna() <
+                                                loty.get(nrlotu - 1).getSamolot().getMiejscaEkonomicznaMax()) {
+                                            loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceEkonomiczna();
+                                        } else {
+                                            System.out.println("Maksymalna ilosc miejsc");
+                                        }
+                                    }
+                                    case "Pierwsza" -> {
+                                        if (loty.get(nrlotu - 1).getSamolot().getMiejscaPierwszaKl() <
+                                                loty.get(nrlotu - 1).getSamolot().getMiejscaPierwszaKlMax()) {
+                                            loty.get(nrlotu - 1).getSamolot().zwolnijMiejscePierwszaKl();
+                                        } else {
+                                            System.out.println("Maksymalna ilosc miejsc");
+                                        }
+                                    }
                                 }    //zwalnianie miejsca w odpowiedniej klasie
                                 List<Rezerwacja> r = loty.get(nrlotu - 1).getKlient(nrklienta - 1).getRezerwacje();
 
