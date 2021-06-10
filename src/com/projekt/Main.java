@@ -33,7 +33,7 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        List<Trasa> trasy = new LinkedList<>();
+        List<Trasa> trasy = new LinkedList<>();         // W TYM MIEJSCU PRZYGOTOWUJEMY LISTY NA DANE ROZNEGO TYPU
         List<Lotnisko> lotniska = new LinkedList<>();
         List<Samolot> samoloty = new LinkedList<>();
         List<Klient> klienci = new LinkedList<>();
@@ -44,7 +44,7 @@ public class Main {
         Random generator = new Random(); 
         List <Bilet> bilety = new LinkedList<>();                                          
 
-        String nazwaPliku = "ListaMiast.txt";
+        String nazwaPliku = "ListaMiast.txt";    // LISTA MIAST JEST POTRZEBNA, ABY MOZNA BYLO ZNAC ODLEGLOSCI
 
         //numer wybranej opcji
         int e=0;
@@ -66,7 +66,7 @@ public class Main {
             {
                 e = scanner.nextInt();
             }
-            catch (InputMismatchException a)
+            catch (InputMismatchException a)        // WYJATEK
             {
                 System.out.println("\nPodaj numer opcji do wykonania!\n");
             }
@@ -83,7 +83,7 @@ public class Main {
                               System.out.println(i + 1 + ". " + klienci.get(i).type+ " " + klienci.get(i).toString()
                               + " liczba rezerwacji: "+klienci.get(i).getRezerwacje().size());
                           }
-                          System.out.println("---------------------------------");
+                          System.out.println("---------------------------------");  // DRZEWO DECYZYJNE
                           System.out.println("1. Dodaj klienta."); //zrobione
                           System.out.println("2. Usuń klienta.");
                           System.out.println("3. Wstecz.");
@@ -93,7 +93,7 @@ public class Main {
                           {
                               w2 = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)      // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -103,7 +103,7 @@ public class Main {
                               case 1: //                        dodaj klienta
                                   int w3=0;
                                   do {
-                                      System.out.println("1. Firma");
+                                      System.out.println("1. Firma");     // CIAG DALSZY DRZEWKA DECYZYJNEGO
                                       System.out.println("2. Osoba prywatna");
                                       System.out.println("3. Wstecz");
                                       System.out.println("Opcja: ");
@@ -120,7 +120,7 @@ public class Main {
                                           int w4=0;
 
                                           do {
-                                              System.out.println("1. Posrednik");
+                                              System.out.println("1. Posrednik");       // WYBRANE ZOSTALY FIRMY
                                               System.out.println("2. Korporacja");
                                               System.out.print("Opcja: ");
                                               try
@@ -134,10 +134,10 @@ public class Main {
                                           } while (w4 != 1 && w4 != 2);
 
                                           System.out.print("Nazwa: ");
-                                          String nazwa = scanner.next();
+                                          String nazwa = scanner.next();        // NAZWA PRZEDSIEBIORSTWA
 
                                           if (w4 == 1) {
-                                              klienci.add(new Posrednik(nazwa));
+                                              klienci.add(new Posrednik(nazwa));    // DODANIE FIRMY O DANEJ NAZWIE
                                           }
                                           if (w4 == 2) {
                                               klienci.add(new Korpo(nazwa));
@@ -145,7 +145,7 @@ public class Main {
                                       } else if (w3 == 2) {
                                           int w4=0;
                                           do {
-                                              System.out.println("1. Zwykla osoba");
+                                              System.out.println("1. Zwykla osoba");    // WYBRANO LUDZI (KLIENTOW)
                                               System.out.println("2. VIP");
                                               System.out.print("Opcja: ");
                                               try
@@ -159,13 +159,13 @@ public class Main {
                                           } while (w4 != 1 && w4 != 2);
 
                                           System.out.print("Imie: ");
-                                          String imie = scanner.next();
+                                          String imie = scanner.next();         // PERSONALIA OSOBY
 
                                           System.out.print("Nazwisko: ");
                                           String nazwisko = scanner.next();
 
                                           if (w4 == 1) {
-                                              klienci.add(new Osoba(imie, nazwisko));
+                                              klienci.add(new Osoba(imie, nazwisko));       // DODANIE
                                           }
                                           if (w4 == 2) {
                                               klienci.add(new OsobaVip(imie, nazwisko));
@@ -178,10 +178,10 @@ public class Main {
                               case 2: //                          usuń klienta
                                   System.out.println("Podaj indeks klienta którego chciałbyś usunąć");
                                   int x = scanner.nextInt();
-                                  klienci.remove(x-1);
+                                  klienci.remove(x-1);  // NA POZYCJI [x-1] LISTY USUWAMY KLIENTA
                                   break;
                               case 3:
-                                  break;
+                                  break;    // POWROC POZIOM WYZEJ
                           }
 
                       } while (w2 != 3);
@@ -190,14 +190,14 @@ public class Main {
 
                       int w=0;
                       do {
-                          System.out.println("Smolotow w bazie: " + samoloty.size());
+                          System.out.println("Smolotow w bazie: " + samoloty.size());   // AKTUALNY STAN FLOTY
 
                           System.out.println("------ Lista samolotów: ------");
                           for (int i = 0; i < samoloty.size(); i++)
-                              System.out.println(i + 1 + ". " + samoloty.get(i).toString());
+                              System.out.println(i + 1 + ". " + samoloty.get(i).toString());    // AKTUALNY STAN FLOTY (WYSZCZEGOL.)
                           System.out.println("------------------------------");
 
-                          System.out.println("1. Dodaj samolot");
+                          System.out.println("1. Dodaj samolot");   // DRZEWKO DECYZYJNE
                           System.out.println("2. Usun samolot");
                           System.out.println("3. Wstecz");
                           System.out.println("Opcja: ");
@@ -205,7 +205,7 @@ public class Main {
                           {
                               w = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)  // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -213,17 +213,17 @@ public class Main {
                           switch (w) {
                               case 1://                               dodawanie samolotu
 
-                                  String model = "";
-                                  String id = "";
-                                  String typ;
+                                  String model = "";        // PODSTAWOWE PARAMETRY SAMOLOTU
+                                  String id = "";           // AIRBUSY NP. ZACZYNAJA SIE NA "A", WYMUSZA TO STRING
+                                  String typ;           // ARBITRALNIE NARZUCONE PARAMETRY A, B, C, D
 
 
                                   while (model.equals("")) {
-                                      System.out.print("Podaj model: ");
+                                      System.out.print("Podaj model: ");    // DODAWANIE MODELU
                                       model = scanner.next();
                                   }
                                   do {
-                                      System.out.print("Podaj id: ");
+                                      System.out.print("Podaj id: ");   // DODAWANIE ID
                                       id = scanner.next();
 
                                   } while (idCheck(id, samoloty));
@@ -231,16 +231,16 @@ public class Main {
                                   do {
                                       System.out.print("Podaj typ (TypA, TypB, TypC, TypD): ");
                                       typ = scanner.next();
-
+                                                                    // DODAWANIE TYPU
                                       if (typ.equals("TypA") || typ.equals("TypB") || typ.equals("TypC") || typ.equals("TypD")) {
                                           break;
                                       } else {
-                                          System.out.println("Podaj właściwy typ samolotu!");
+                                          System.out.println("Podaj właściwy typ samolotu!"); // USER PODAL ZLY
                                       }
 
                                   } while (true);
-
-                                  if (typ.equals("TypA")) {
+                                            // PRZESZLISMY PRZEZ ETAP WERYFIKUJACY POPRAWNOSC (typy: A, B, C, D)
+                                  if (typ.equals("TypA")) {     // GDY DANY TYP - DODAJ NOWY SAMOLOT TYP odpowiednio: A, B, C, D
                                       samoloty.add(new TypA(id, model));
                                   }
                                   if (typ.equals("TypB")) {
@@ -258,31 +258,31 @@ public class Main {
                               case 2://                       usuwanie samolotu
 
                                   System.out.print("Podaj numer samolotu do usuniecia: ");
-                                  int toRemove = scanner.nextInt();
+                                  int toRemove = scanner.nextInt();     // NUMER INDEKSU, OST EL. LISTY [MAX-1]
                                   samoloty.remove(toRemove - 1);
                                   break;
 
-                              case 3://                       exit
+                              case 3://                       exit - POZIOM WYZEJ
                                   break;
                           }
 
 
-                      } while (w != 3);
+                      } while (w != 3);             // PONOWNIE POWROT PIETRO WYZEJ
                       break;
 
                   case 3:                                    //lotniska
                       int w1=0;
 
                       do {
-                          System.out.println("Ilość lotnisk w bazie: " + lotniska.size());
-
+                          System.out.println("Ilość lotnisk w bazie: " + lotniska.size()); // STAN AKTUALNY
+                                    // WYSZCZEGOLNIENIE
                           System.out.println("------ Lista wszystkich lotnisk dostępnych w bazie: ------");
                           for (int i = 0; i < lotniska.size(); i++) {
                               System.out.println(i + 1 + ". " + lotniska.get(i).toString());
                           }
                           System.out.println("----------------------------------------------------------");
 
-                          System.out.println("1. Dodaj nowe lotnisko");
+                          System.out.println("1. Dodaj nowe lotnisko"); // DRZEWKO DECYZYJNE
                           System.out.println("2. Usuń lotnisko");
                           System.out.println("3. Wstecz");
                           System.out.println("Opcja: ");
@@ -290,7 +290,7 @@ public class Main {
                           {
                               w1 = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)  // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -298,11 +298,11 @@ public class Main {
                           switch (w1) {
 
                               case 1:
-                                  System.out.print("Podaj kraj: ");
+                                  System.out.print("Podaj kraj: "); // DODAJEMY LOTNISKO W KRAJU, MIESCIE
                                   String kraj = scanner.next();
                                   System.out.print("Podaj miasto: ");
                                   String m = scanner.next();
-
+                                            // W PRZYSZLOSCI ROZSZERZENIE O KOORDY. GEOGRAFICZNE DO AUTOMATYCZNYCH ODLEGLOSCI
                                   lotniska.add(new Lotnisko(kraj, m));
 
                                   break;
@@ -310,14 +310,14 @@ public class Main {
                               case 2:
                                   System.out.println("Podaj numer indeksu lotniska które chcesz usunąć");
                                   int c = scanner.nextInt();
-                                  lotniska.remove(c-1);
+                                  lotniska.remove(c-1);     // [MAX-1] TO OSTATNI NUMER
                                   break;
 
                               case 3:
-                                  break;
+                                  break;            // PIETRO WYZEJ
                           }
 
-                      } while (w1 != 3);
+                      } while (w1 != 3);            // PIETRO WYZEJ
 
                       break;
                   case 4:
