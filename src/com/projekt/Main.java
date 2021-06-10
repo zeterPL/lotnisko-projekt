@@ -637,7 +637,7 @@ public class Main {
                                 int nrMiejsca;                           // z jakiej klasy zwolnić miejsce przy usuwaniu
                                 double cenaBiletu;                       // rezerwacji
 
-                                switch (wyborKlasy) {
+                                switch (wyborKlasy) {   // GDY WYBOR KLASY TO 1, 2, NASTEPUJE WYLICZENIA NP. CENY BILOETU
                                     case 1:
                                         if (loty.get(f-1).getSamolot().getMiejscaPierwszaKl() == 0) {
                                             System.out.println("Brak wolnych miejsc w pierwszej klasie! Wybierz inną klasę.");
@@ -675,26 +675,26 @@ public class Main {
                                 rezerwacje.add(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana nowa rezerwacja do listy
                                 klienci.get(q - 1).addRezerwacja(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana rezerwacja do klienta
                                 break;
-                            case 2:
+                            case 2:         // CZESC DLA WYSWIETLANIA REZERWACJI
                                 System.out.println("------ Wybierz lot z listy: ------");
                                 for (int i = 0; i < loty.size(); i++) {
-                                    System.out.println(i + 1 + ". " + loty.get(i).toString());
+                                    System.out.println(i + 1 + ". " + loty.get(i).toString());  // WYBIERANIE LOTU
                                 }
                                 System.out.println("----------------------------------");
                                 int d = scanner.nextInt();
 
                                 if(loty.get(d-1).getKlienci().size()==0)
                                 {
-                                    System.out.println("Brak rezerwacji na ten lot");
+                                    System.out.println("Brak rezerwacji na ten lot");   // GDY PUSTO
                                     break;
                                 }
                                 else {System.out.println(loty.get(d - 1).getKlienci().toString()); }
 
                                 break;
-                            case 3:
+                            case 3:         // KASOWANIE REZERWACJI
                                 System.out.println("Wybierz numer lotu na którym chcesz usunąć rezerwację: ");
 
-                                for (int i = 0; i < loty.size(); i++) {
+                                for (int i = 0; i < loty.size(); i++) { // WYSWIETL LISTE
                                     System.out.println(i + 1 + ". " + loty.get(i).toString());
                                 }
                                 System.out.println("Wybór: ");
@@ -776,7 +776,7 @@ public class Main {
                           {
                               wybor = scanner.nextInt();
                           }
-                          catch (InputMismatchException aa)
+                          catch (InputMismatchException aa) //WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -790,7 +790,7 @@ public class Main {
                                   if(trasy.size() == 0 && loty.size() == 0 && lotniska.size() == 0
                                           && samoloty.size() == 0 && klienci.size() == 0 )
                                   {
-                                      System.out.println("\nBrak danych w systemie!\n");
+                                      System.out.println("\nBrak danych w systemie!\n"); // GDY NIE MA NIC
                                       break;
                                   }
                                   else
