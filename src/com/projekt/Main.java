@@ -1088,22 +1088,10 @@ public class Main {
                                                       loty.add(lot);
                                                   }
 
-
-
-
                                               }
-
                                           }
 
-
                                       }
-
-
-
-
-
-
-
 
                                   System.out.println("-------------------------------------");
                                   System.out.println("Wczytano dane z  " + plik);
@@ -1124,9 +1112,6 @@ public class Main {
                   case 8:
                       break;//exit
               }
-
-
-
 
         } while (e != liczbaOpcji);
 
