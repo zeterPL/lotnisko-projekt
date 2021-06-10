@@ -33,18 +33,18 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        List<Trasa> trasy = new LinkedList<>();
+        List<Trasa> trasy = new LinkedList<>();         // W TYM MIEJSCU PRZYGOTOWUJEMY LISTY NA DANE ROZNEGO TYPU
         List<Lotnisko> lotniska = new LinkedList<>();
         List<Samolot> samoloty = new LinkedList<>();
         List<Klient> klienci = new LinkedList<>();
         List<Lot> loty = new LinkedList<>();
         List<Rezerwacja> rezerwacje = new LinkedList<>();
         //List <String> listaMiast = new ArrayList<>();
-        LinkedList numeryBiletow = new LinkedList();                               
+        LinkedList numeryBiletow = new LinkedList();
         Random generator = new Random(); 
         List <Bilet> bilety = new LinkedList<>();                                          
 
-        String nazwaPliku = "ListaMiast.txt";
+        String nazwaPliku = "ListaMiast.txt";    // LISTA MIAST JEST POTRZEBNA, ABY MOZNA BYLO ZNAC ODLEGLOSCI
 
         //numer wybranej opcji
         int e=0;
@@ -66,7 +66,7 @@ public class Main {
             {
                 e = scanner.nextInt();
             }
-            catch (InputMismatchException a)
+            catch (InputMismatchException a)        // WYJATEK
             {
                 System.out.println("\nPodaj numer opcji do wykonania!\n");
             }
@@ -83,7 +83,7 @@ public class Main {
                               System.out.println(i + 1 + ". " + klienci.get(i).type+ " " + klienci.get(i).toString()
                               + " liczba rezerwacji: "+klienci.get(i).getRezerwacje().size());
                           }
-                          System.out.println("---------------------------------");
+                          System.out.println("---------------------------------");  // DRZEWO DECYZYJNE
                           System.out.println("1. Dodaj klienta."); //zrobione
                           System.out.println("2. Usuń klienta.");
                           System.out.println("3. Wstecz.");
@@ -93,7 +93,7 @@ public class Main {
                           {
                               w2 = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)      // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -103,7 +103,7 @@ public class Main {
                               case 1: //                        dodaj klienta
                                   int w3=0;
                                   do {
-                                      System.out.println("1. Firma");
+                                      System.out.println("1. Firma");     // CIAG DALSZY DRZEWKA DECYZYJNEGO
                                       System.out.println("2. Osoba prywatna");
                                       System.out.println("3. Wstecz");
                                       System.out.println("Opcja: ");
@@ -120,7 +120,7 @@ public class Main {
                                           int w4=0;
 
                                           do {
-                                              System.out.println("1. Posrednik");
+                                              System.out.println("1. Posrednik");       // WYBRANE ZOSTALY FIRMY
                                               System.out.println("2. Korporacja");
                                               System.out.print("Opcja: ");
                                               try
@@ -134,10 +134,10 @@ public class Main {
                                           } while (w4 != 1 && w4 != 2);
 
                                           System.out.print("Nazwa: ");
-                                          String nazwa = scanner.next();
+                                          String nazwa = scanner.next();        // NAZWA PRZEDSIEBIORSTWA
 
                                           if (w4 == 1) {
-                                              klienci.add(new Posrednik(nazwa));
+                                              klienci.add(new Posrednik(nazwa));    // DODANIE FIRMY O DANEJ NAZWIE
                                           }
                                           if (w4 == 2) {
                                               klienci.add(new Korpo(nazwa));
@@ -145,7 +145,7 @@ public class Main {
                                       } else if (w3 == 2) {
                                           int w4=0;
                                           do {
-                                              System.out.println("1. Zwykla osoba");
+                                              System.out.println("1. Zwykla osoba");    // WYBRANO LUDZI (KLIENTOW)
                                               System.out.println("2. VIP");
                                               System.out.print("Opcja: ");
                                               try
@@ -159,13 +159,13 @@ public class Main {
                                           } while (w4 != 1 && w4 != 2);
 
                                           System.out.print("Imie: ");
-                                          String imie = scanner.next();
+                                          String imie = scanner.next();         // PERSONALIA OSOBY
 
                                           System.out.print("Nazwisko: ");
                                           String nazwisko = scanner.next();
 
                                           if (w4 == 1) {
-                                              klienci.add(new Osoba(imie, nazwisko));
+                                              klienci.add(new Osoba(imie, nazwisko));       // DODANIE
                                           }
                                           if (w4 == 2) {
                                               klienci.add(new OsobaVip(imie, nazwisko));
@@ -178,10 +178,10 @@ public class Main {
                               case 2: //                          usuń klienta
                                   System.out.println("Podaj indeks klienta którego chciałbyś usunąć");
                                   int x = scanner.nextInt();
-                                  klienci.remove(x-1);
+                                  klienci.remove(x-1);  // NA POZYCJI [x-1] LISTY USUWAMY KLIENTA
                                   break;
                               case 3:
-                                  break;
+                                  break;    // POWROC POZIOM WYZEJ
                           }
 
                       } while (w2 != 3);
@@ -190,14 +190,14 @@ public class Main {
 
                       int w=0;
                       do {
-                          System.out.println("Smolotow w bazie: " + samoloty.size());
+                          System.out.println("Smolotow w bazie: " + samoloty.size());   // AKTUALNY STAN FLOTY
 
                           System.out.println("------ Lista samolotów: ------");
                           for (int i = 0; i < samoloty.size(); i++)
-                              System.out.println(i + 1 + ". " + samoloty.get(i).toString());
+                              System.out.println(i + 1 + ". " + samoloty.get(i).toString());    // AKTUALNY STAN FLOTY (WYSZCZEGOL.)
                           System.out.println("------------------------------");
 
-                          System.out.println("1. Dodaj samolot");
+                          System.out.println("1. Dodaj samolot");   // DRZEWKO DECYZYJNE
                           System.out.println("2. Usun samolot");
                           System.out.println("3. Wstecz");
                           System.out.println("Opcja: ");
@@ -205,7 +205,7 @@ public class Main {
                           {
                               w = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)  // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -213,17 +213,17 @@ public class Main {
                           switch (w) {
                               case 1://                               dodawanie samolotu
 
-                                  String model = "";
-                                  String id = "";
-                                  String typ;
+                                  String model = "";        // PODSTAWOWE PARAMETRY SAMOLOTU
+                                  String id = "";           // AIRBUSY NP. ZACZYNAJA SIE NA "A", WYMUSZA TO STRING
+                                  String typ;           // ARBITRALNIE NARZUCONE PARAMETRY A, B, C, D
 
 
                                   while (model.equals("")) {
-                                      System.out.print("Podaj model: ");
+                                      System.out.print("Podaj model: ");    // DODAWANIE MODELU
                                       model = scanner.next();
                                   }
                                   do {
-                                      System.out.print("Podaj id: ");
+                                      System.out.print("Podaj id: ");   // DODAWANIE ID
                                       id = scanner.next();
 
                                   } while (idCheck(id, samoloty));
@@ -231,16 +231,16 @@ public class Main {
                                   do {
                                       System.out.print("Podaj typ (TypA, TypB, TypC, TypD): ");
                                       typ = scanner.next();
-
+                                                                    // DODAWANIE TYPU
                                       if (typ.equals("TypA") || typ.equals("TypB") || typ.equals("TypC") || typ.equals("TypD")) {
                                           break;
                                       } else {
-                                          System.out.println("Podaj właściwy typ samolotu!");
+                                          System.out.println("Podaj właściwy typ samolotu!"); // USER PODAL ZLY
                                       }
 
                                   } while (true);
-
-                                  if (typ.equals("TypA")) {
+                                            // PRZESZLISMY PRZEZ ETAP WERYFIKUJACY POPRAWNOSC (typy: A, B, C, D)
+                                  if (typ.equals("TypA")) {     // GDY DANY TYP - DODAJ NOWY SAMOLOT TYP odpowiednio: A, B, C, D
                                       samoloty.add(new TypA(id, model));
                                   }
                                   if (typ.equals("TypB")) {
@@ -258,31 +258,31 @@ public class Main {
                               case 2://                       usuwanie samolotu
 
                                   System.out.print("Podaj numer samolotu do usuniecia: ");
-                                  int toRemove = scanner.nextInt();
+                                  int toRemove = scanner.nextInt();     // NUMER INDEKSU, OST EL. LISTY [MAX-1]
                                   samoloty.remove(toRemove - 1);
                                   break;
 
-                              case 3://                       exit
+                              case 3://                       exit - POZIOM WYZEJ
                                   break;
                           }
 
 
-                      } while (w != 3);
+                      } while (w != 3);             // PONOWNIE POWROT PIETRO WYZEJ
                       break;
 
                   case 3:                                    //lotniska
                       int w1=0;
 
                       do {
-                          System.out.println("Ilość lotnisk w bazie: " + lotniska.size());
-
+                          System.out.println("Ilość lotnisk w bazie: " + lotniska.size()); // STAN AKTUALNY
+                                    // WYSZCZEGOLNIENIE
                           System.out.println("------ Lista wszystkich lotnisk dostępnych w bazie: ------");
                           for (int i = 0; i < lotniska.size(); i++) {
                               System.out.println(i + 1 + ". " + lotniska.get(i).toString());
                           }
                           System.out.println("----------------------------------------------------------");
 
-                          System.out.println("1. Dodaj nowe lotnisko");
+                          System.out.println("1. Dodaj nowe lotnisko"); // DRZEWKO DECYZYJNE
                           System.out.println("2. Usuń lotnisko");
                           System.out.println("3. Wstecz");
                           System.out.println("Opcja: ");
@@ -290,7 +290,7 @@ public class Main {
                           {
                               w1 = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)  // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -298,11 +298,11 @@ public class Main {
                           switch (w1) {
 
                               case 1:
-                                  System.out.print("Podaj kraj: ");
+                                  System.out.print("Podaj kraj: "); // DODAJEMY LOTNISKO W KRAJU, MIESCIE
                                   String kraj = scanner.next();
                                   System.out.print("Podaj miasto: ");
                                   String m = scanner.next();
-
+                                            // W PRZYSZLOSCI ROZSZERZENIE O KOORDY. GEOGRAFICZNE DO AUTOMATYCZNYCH ODLEGLOSCI
                                   lotniska.add(new Lotnisko(kraj, m));
 
                                   break;
@@ -310,29 +310,29 @@ public class Main {
                               case 2:
                                   System.out.println("Podaj numer indeksu lotniska które chcesz usunąć");
                                   int c = scanner.nextInt();
-                                  lotniska.remove(c-1);
+                                  lotniska.remove(c-1);     // [MAX-1] TO OSTATNI NUMER
                                   break;
 
                               case 3:
-                                  break;
+                                  break;            // PIETRO WYZEJ
                           }
 
-                      } while (w1 != 3);
+                      } while (w1 != 3);            // PIETRO WYZEJ
 
                       break;
                   case 4:
                       int x=0;                               //loty
                       do {
-                          System.out.println("Liczba dostepnych lotow: " + loty.size());
+                          System.out.println("Liczba dostepnych lotow: " + loty.size());    // AKTUALNY STAN POLACZEN
 
                           System.out.println("------ Lista wszystkich dostępnych lotów: ------"); //zrobione
 
                           for (int i = 0; i < loty.size(); i++) {
-                              System.out.println(i + 1 + ". " + loty.get(i).toString());
+                              System.out.println(i + 1 + ". " + loty.get(i).toString());    // WYSTWIETLANIE AKTUALNYCH
                           }
                           System.out.println("------------------------------------------------");
 
-                          System.out.println("1. Dodaj lot na trasie.");
+                          System.out.println("1. Dodaj lot na trasie.");    // DRZEWKO DECYZYJNE
                           System.out.println("2. Anuluj lot.");
                           System.out.println("3. Wstecz.");
                           System.out.println("Wybór: ");
@@ -340,7 +340,7 @@ public class Main {
                           {
                               x = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)      // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -348,35 +348,35 @@ public class Main {
                           switch(x) {
                               case 1: //dodaj lot
                                   if (trasy.size() < 1) {
-                                      System.out.println("Niewystarczająca ilość tras.");
+                                      System.out.println("Niewystarczająca ilość tras.");   // ZA MALO TRAS
                                       break;
                                   }
 
                                   System.out.println("Wybierz trasę na której chcesz dodać lot: ");
                                   System.out.println("------ Lista dostępnych tras: ------");
-                                  for (int i = 0; i < trasy.size(); i++) {
+                                  for (int i = 0; i < trasy.size(); i++) {      // WYSWIETL AKTUALNA LISTE TRAS
                                       System.out.println(i + 1 + ". " + trasy.get(i).toString());
                                   }
                                   System.out.println("------------------------------------");
 
-                                  System.out.println("Wybór: ");
+                                  System.out.println("Wybór: ");    // USER WYBIERA NUMER Z TRASA OD-DO
                                   int g = scanner.nextInt();
 
-                                  if(g > trasy.size())
+                                  if(g > trasy.size())          // ZLY NUMER
                                   {
                                       System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
                                   }
                                   else
                                   {
                                       Trasa t = trasy.get(g-1);
-                                      float odl = t.getDlugosc();
+                                      float odl = t.getDlugosc();   // NIE KAZDY SAMOLOT MOZE PODROZOWAC PO TRASIE
 
                                       int j =0;
                                       System.out.println("------ Lista samolotow obsugujacych ten dystans: ------");
                                       for (int i = 0; i < samoloty.size(); i++)
                                       {
 
-                                          if(odl <= samoloty.get(i).getZasieg())
+                                          if(odl <= samoloty.get(i).getZasieg())        // MOZNA LATAC, GDY DYSTANS POZWALA
                                           {
                                               System.out.println(j + 1 + ". " + samoloty.get(i).toString());
                                               j++;
@@ -384,7 +384,7 @@ public class Main {
 
                                       }
 
-                                      if(j==0)
+                                      if(j==0)          // GDY NIE MA STATKOW POWIETRZNYCH UCIEKAMY
                                       {
                                           System.out.println("\nBrak dostepnych samolotow\n");
                                           break;
@@ -392,14 +392,14 @@ public class Main {
 
                                       System.out.println("------------------------------------");
 
-                                      System.out.println("Wybierz numer samolotu: ");
+                                      System.out.println("Wybierz numer samolotu: ");       // PODAJ PARAMETRY
                                       System.out.print("Wybor:  ");
                                       int in = scanner.nextInt();
 
                                       int rodzaj;
 
                                       do {
-                                          System.out.println("1. Zwykly lot ");
+                                          System.out.println("1. Zwykly lot ");         // DODATKOWE INFORMACJE
                                           System.out.println("2. Cotygodniowy lot");
                                           System.out.println("3. Codzienny lot");
                                           System.out.print("Wybor:  ");
@@ -414,7 +414,7 @@ public class Main {
                                           Lot lot = new Lot();
                                           lot.setTrasa(t);
                                           lot.setSamolot(samoloty.get(in-1));
-                                          loty.add(lot);
+                                          loty.add(lot);            // DODAJEMY LOTY NA WYBRANEJ TRASIE
                                           break;
                                       }
                                       else if(rodzaj==2)
@@ -441,12 +441,12 @@ public class Main {
                               case 2:   //anuluj lot
                                   System.out.println("------ Lista wszystkich dostępnych lotów: ------"); //zrobione
 
-                                  for (int i = 0; i < loty.size(); i++) {
+                                  for (int i = 0; i < loty.size(); i++) {   // STAN AKTUALNY
                                       System.out.println(i + 1 + ". " + loty.get(i).toString());
                                   }
                                   System.out.println("------------------------------------------------");
                                   System.out.print("Nr lotu do usuniecia: ");
-                                  int nr = scanner.nextInt();
+                                  int nr = scanner.nextInt();       // PODAJ INDEKS DO USUNIECIA [MAX-1] OSTATNI
 
                                   if(nr > loty.size())
                                   {
@@ -467,14 +467,14 @@ public class Main {
                       do
                       {
                           System.out.println("Ilość dostępnych tras: " + trasy.size());
-                          System.out.println("------ Lista dostępnych tras: ------");
+                          System.out.println("------ Lista dostępnych tras: ------");   // AKTUALNA SIATKA POLACZEN
                           for (int i = 0; i < trasy.size(); i++) {
                               System.out.println(i + 1 + ". " + trasy.get(i).toString());
                           }
                           System.out.println("------------------------------------");
 
 
-                          System.out.println("1. Dodaj nowe połączenie.");
+                          System.out.println("1. Dodaj nowe połączenie.");                  // DRZEWKO DECYZYJNE
                           System.out.println("2. Wycofaj połączenie pomiędzy lotniskami.");
                           System.out.println("3. Wstecz.");
                           System.out.println("Wybór: ");
@@ -482,14 +482,14 @@ public class Main {
                           {
                               z = scanner.nextInt();
                           }
-                          catch (InputMismatchException a)
+                          catch (InputMismatchException a)  // WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
 
                           switch(z) {
                               case 1:
-                                  if (lotniska.size() == 0) {
+                                  if (lotniska.size() == 0) {       // BRAK LOTNISK
                                       System.out.println("Brak dostępnych lotnisk.");
                                       break;
                                   }
@@ -497,47 +497,47 @@ public class Main {
                                       System.out.println(i + 1 + ". " + lotniska.get(i).toString());
                                   }
 
-                                  System.out.print("Wybierz nr lotniska wylotu: ");
+                                  System.out.print("Wybierz nr lotniska wylotu: ");         // PODAWANIE TRASY OD-DO
                                   int wylot = scanner.nextInt();
-                                  System.out.print("Wybierz nr lotniska przylotu: ");
+                                  System.out.print("Wybierz nr lotniska przylotu: ");       // PODAWANIE TRASY OD-DO
                                   int cel = scanner.nextInt();
 
                                   if (wylot > lotniska.size() || cel > lotniska.size()) {
-                                      System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
+                                      System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");        // BLEDNE DANE
                                   } else {
                                       trasy.add(new Trasa(lotniska.get(wylot - 1), lotniska.get(cel - 1)));
                                       break;
                                   }
 
                               case 2:
-                                  for (int i = 0; i < trasy.size(); i++) {
+                                  for (int i = 0; i < trasy.size(); i++) {  // KASOWANIE
                                       System.out.println(i + 1 + ". " + trasy.get(i).toString());
                                   }
 
                                   System.out.print("Wybierz nr trasy do usuniecia: ");
-                                  int nr = scanner.nextInt();
+                                  int nr = scanner.nextInt();       // OSTATNI NR TO [MAX-1]
 
                                   if(nr > trasy.size()){
-                                      System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n");
+                                      System.out.println("\nBłąd indeksu! Spróbuj ponownie.\n"); // TUTAJ ZLY NUMER
                                   }
                                   else {
-                                      trasy.remove(nr-1);
+                                      trasy.remove(nr-1);       // USUWAM
                                   }
 
-                                  break;
+                                  break;            // UCIECZKA Z PETLI
 
                               case 3:
-                                  break;
+                                  break;    // UCIECZKA Z PETLI NA POPRZEDNI POZIOM
                           }
 
                       }while (z!=3);
 
-                      break;
+                      break;        // UCIECZKA DO GLOWNEGO MENU
 
                   case 6:     ////////////////////////REZERWACJE////////////////////////////
                     int a = 0;
                     do {
-                        System.out.println("1. Dodaj nową rezerwację. ");
+                        System.out.println("1. Dodaj nową rezerwację. ");         // DRZEWKO DECYZYJNE
                         System.out.println("2. Sprawdź ilość rezerwacji na danym locie. ");
                         System.out.println("3. Usuń rezerwację. ");
                         System.out.println("4. Wstecz.");
@@ -547,16 +547,17 @@ public class Main {
                         {
                             a = scanner.nextInt();
                         }
-                        catch (InputMismatchException ex)
+                        catch (InputMismatchException ex)       // WYJATEK
                         {
                             System.out.println("\nPodaj właściwy numer opcji do wykonania!\n");
                         }
 
 
                         switch(a) {
-                            case 1:
-                                if(klienci.size() < 1) {System.out.println("Brak klientow"); break; }
-                                System.out.println("Wybierz klienta rezerwującego lot: ");
+                            case 1:                 //dadawanie rezerwacji
+                                if(klienci.size() < 1) {System.out.println("Brak klientow"); break; } // SYT. SZCZEGOLNA, BRAK KLIENTOW
+
+                                System.out.println("Wybierz klienta rezerwującego lot: ");  //WYSWIETLANIE LISTY KLIENTOW
                                 System.out.println("-------------------------------------");
                                 for (int i = 0; i < klienci.size(); i++) {
                                     System.out.println(i + 1 + ". " + klienci.get(i).toString());
@@ -565,9 +566,10 @@ public class Main {
                                 System.out.println("Wybór: ");
                                 int q = scanner.nextInt(); //numer klienta
 
-                                if(loty.size() < 1) {System.out.println("Brak lotow"); break; }
-                                System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. ");
+                                if(loty.size() < 1) {System.out.println("Brak lotow"); break; } // BLAD DOT. LOTOW
+                                System.out.println("Wybierz numer lotu na którym chcesz dokonać rezerwacji. "); // PODAJ NUMER LOTU
                                 System.out.println("-------------------------------------");
+
                                 int k=0;
                                 for (Lot lot : loty) {
 
@@ -577,10 +579,30 @@ public class Main {
                                 System.out.println("-------------------------------------");
                                 int f = scanner.nextInt(); //numer lotu
 
-                                int numerBiletu = generator.nextInt(41000);
+                                int numerBiletu = generator.nextInt(41000);     // NUMER PSEUDOLOSOWY
 
-                                Iterator it = numeryBiletow.iterator();
+                               // Iterator it = numeryBiletow.iterator();
                                 boolean istniejeNumer = true;
+
+                                if(bilety.size()!=0)
+                                {
+                                    for(int i=0;i<=bilety.size();i++)
+                                    {
+                                        if(bilety.get(i).getId()==numerBiletu)
+                                        {
+                                            numerBiletu = generator.nextInt(41000);
+                                        }
+                                        else
+                                        {
+                                            istniejeNumer=false;
+                                        }
+                                    }
+
+                                }
+
+
+
+/*
                                 while(istniejeNumer) {
                                     for (Object o : numeryBiletow) {
                                         if (o.equals(numerBiletu)) {
@@ -591,18 +613,20 @@ public class Main {
                                         }
                                     }
                                 }
-                                System.out.println("Twój numer biletu: " + numerBiletu);
-                                System.out.println(numerBiletu);
+
+ */
+                                System.out.println("Twój numer biletu: " + numerBiletu); // INFO O BILECIE
+                                //System.out.println(numerBiletu);
 
                                 int wyborKlasy = 0;
                                 boolean wyborKlasyOk = false;
                                 while (!wyborKlasyOk) {
-                                    System.out.println("Wybierz klasę: ");
+                                    System.out.println("Wybierz klasę: ");      // WYBOR KLASY (OGRANICZONA LICZBA MIEJSC DLA KAZDEJ Z NICH)
                                     System.out.println("1. Pierwsza Klasa: " + loty.get(f-1).getSamolot().getMiejscaPierwszaKl() + " wolnych miejsc");
                                     System.out.println("2. Biznesowa: " + loty.get(f-1).getSamolot().getMiejscaBiznesowa() + " wolnych miejsc");
                                     System.out.println("3. Ekonomiczna: " + loty.get(f-1).getSamolot().getMiejscaEkonomiczna() + " wolnych miejsc");
                                     System.out.println("Wybór: ");
-                                    wyborKlasy = scanner.nextInt();
+                                    wyborKlasy = scanner.nextInt(); // USER PODAJE NUMER KLASY
                                     if (wyborKlasy == 1 || wyborKlasy == 2 || wyborKlasy == 3) {
                                         wyborKlasyOk = true;
                                     } else {
@@ -613,7 +637,7 @@ public class Main {
                                 int nrMiejsca;                           // z jakiej klasy zwolnić miejsce przy usuwaniu
                                 double cenaBiletu;                       // rezerwacji
 
-                                switch (wyborKlasy) {
+                                switch (wyborKlasy) {   // GDY WYBOR KLASY TO 1, 2, NASTEPUJE WYLICZENIA NP. CENY BILOETU
                                     case 1:
                                         if (loty.get(f-1).getSamolot().getMiejscaPierwszaKl() == 0) {
                                             System.out.println("Brak wolnych miejsc w pierwszej klasie! Wybierz inną klasę.");
@@ -651,20 +675,26 @@ public class Main {
                                 rezerwacje.add(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana nowa rezerwacja do listy
                                 klienci.get(q - 1).addRezerwacja(new Rezerwacja(bilety.get(bilety.size()-1), loty.get(f-1))); //dodana rezerwacja do klienta
                                 break;
-                            case 2:
+                            case 2:         // CZESC DLA WYSWIETLANIA REZERWACJI
                                 System.out.println("------ Wybierz lot z listy: ------");
                                 for (int i = 0; i < loty.size(); i++) {
-                                    System.out.println(i + 1 + ". " + loty.get(i).toString());
+                                    System.out.println(i + 1 + ". " + loty.get(i).toString());  // WYBIERANIE LOTU
                                 }
                                 System.out.println("----------------------------------");
                                 int d = scanner.nextInt();
 
-                                System.out.println(loty.get(d - 1).getKlienci().toString());
+                                if(loty.get(d-1).getKlienci().size()==0)
+                                {
+                                    System.out.println("Brak rezerwacji na ten lot");   // GDY PUSTO
+                                    break;
+                                }
+                                else {System.out.println(loty.get(d - 1).getKlienci().toString()); }
+
                                 break;
-                            case 3:
+                            case 3:         // KASOWANIE REZERWACJI
                                 System.out.println("Wybierz numer lotu na którym chcesz usunąć rezerwację: ");
 
-                                for (int i = 0; i < loty.size(); i++) {
+                                for (int i = 0; i < loty.size(); i++) { // WYSWIETL LISTE
                                     System.out.println(i + 1 + ". " + loty.get(i).toString());
                                 }
                                 System.out.println("Wybór: ");
@@ -674,18 +704,66 @@ public class Main {
 
 
                                 for (int i = 0; i < loty.get(nrlotu - 1).getKlienci().size(); i++) {
-                                    System.out.println(i + 1 + ". " + loty.get(nrlotu - 1).getKlienci().toString());
+                                    System.out.println(i + 1 + ". " + loty.get(nrlotu - 1).getKlienci().get(i).toString());
                                 }
                                 int nrklienta = scanner.nextInt(); //numer klienta z lotu(ale nie id)
 
                                 switch (loty.get(nrlotu - 1).getKlient(nrklienta - 1).getKlasa()) {
-                                    case "Biznesowa" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceBiznesowa();
-                                    case "Ekonomiczna" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceEkonomiczna();
-                                    case "Pierwsza" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejscePierwszaKl();
+                                    case "Biznesowa" -> {
+                                        if (loty.get(nrlotu - 1).getSamolot().getMiejscaBiznesowa() <
+                                                loty.get(nrlotu - 1).getSamolot().getMiejscaBiznesowaMax()) {
+                                            loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceBiznesowa();
+                                        } else {
+                                            System.out.println("Maksymalna ilosc miejsc");
+                                        }
+                                    }
+                                    case "Ekonomiczna" -> {
+                                        if (loty.get(nrlotu - 1).getSamolot().getMiejscaEkonomiczna() <
+                                                loty.get(nrlotu - 1).getSamolot().getMiejscaEkonomicznaMax()) {
+                                            loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceEkonomiczna();
+                                        } else {
+                                            System.out.println("Maksymalna ilosc miejsc");
+                                        }
+                                    }
+                                    case "Pierwsza" -> {
+                                        if (loty.get(nrlotu - 1).getSamolot().getMiejscaPierwszaKl() <
+                                                loty.get(nrlotu - 1).getSamolot().getMiejscaPierwszaKlMax()) {
+                                            loty.get(nrlotu - 1).getSamolot().zwolnijMiejscePierwszaKl();
+                                        } else {
+                                            System.out.println("Maksymalna ilosc miejsc");
+                                        }
+                                    }
                                 }    //zwalnianie miejsca w odpowiedniej klasie
-                                loty.get(nrlotu - 1).getKlienci().remove(nrklienta - 1); //usuwanie klienta z lotu
+                                List<Rezerwacja> r = loty.get(nrlotu - 1).getKlient(nrklienta - 1).getRezerwacje();
+
+
+
+                                int bilet=0;
+
+                                for(int i=0;i<r.size();i++)
+                                {
+                                    bilet = r.get(i).getBilet().getId();
+                                }
+
+                                for(int i=0;i<bilety.size();i++)
+                                {
+                                    if(bilety.get(i).getId() == bilet)
+                                    {
+                                        bilety.remove(i);
+                                        for(int j=0;j<rezerwacje.size();j++)
+                                        {
+                                            if(rezerwacje.get(i).getBilet().getId()==bilet)
+                                            {
+                                                rezerwacje.remove(j);
+                                            }
+                                        }
+                                    }
+                                }
 
                                 loty.get(nrlotu - 1).getKlient(nrklienta - 1).deleteRezerwacja(); //usuwanie rezerwacji u klienta
+                                loty.get(nrlotu - 1).getKlienci().remove(nrklienta - 1); //usuwanie klienta z lotu
+
+/*
                                 for (int i = 0; i < bilety.size(); i++) {
                                     for (int j = 0; j < rezerwacje.size(); j++) {
                                         if (bilety.get(i).getId() == rezerwacje.get(j).getBilet().getId()) {
@@ -694,6 +772,8 @@ public class Main {
                                         }
                                     }
                                 }
+
+ */
                                 break;
                         }
 
@@ -717,7 +797,7 @@ public class Main {
                           {
                               wybor = scanner.nextInt();
                           }
-                          catch (InputMismatchException aa)
+                          catch (InputMismatchException aa) //WYJATEK
                           {
                               System.out.println("\nPodaj numer opcji do wykonania!\n");
                           }
@@ -731,7 +811,7 @@ public class Main {
                                   if(trasy.size() == 0 && loty.size() == 0 && lotniska.size() == 0
                                           && samoloty.size() == 0 && klienci.size() == 0 )
                                   {
-                                      System.out.println("\nBrak danych w systemie!\n");
+                                      System.out.println("\nBrak danych w systemie!\n"); // GDY NIE MA NIC
                                       break;
                                   }
                                   else
@@ -876,7 +956,7 @@ public class Main {
 
                                           }
                                           if (nazwa.equals("TRASY")) {
-                                              while (!nazwa.equals("LOTY")) {
+                                              while (!nazwa.equals("SAMOLOTY")) {
                                                   nazwa = s.nextLine();
                                                   if (nazwa.equals("SAMOLOTY")) {
                                                       break;
@@ -1029,22 +1109,10 @@ public class Main {
                                                       loty.add(lot);
                                                   }
 
-
-
-
                                               }
-
                                           }
 
-
                                       }
-
-
-
-
-
-
-
 
                                   System.out.println("-------------------------------------");
                                   System.out.println("Wczytano dane z  " + plik);
@@ -1065,9 +1133,6 @@ public class Main {
                   case 8:
                       break;//exit
               }
-
-
-
 
         } while (e != liczbaOpcji);
 
