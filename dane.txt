@@ -51,7 +51,7 @@ CT!Split Chorwacja;Barcelona Hiszpania#TypC Embraer;HSD00D
 CT!Pekin Chiny;Bangkok Tajlandia#TypC Embraer;GKJ00
 !Wenecja Wlochy;Barcelona Hiszpania#TypD McDonnell;TK0VH9
 !Dakar Senegal;Kair Egipt#TypD McDonnell;TK0VH9
-!Kapsztad SAfryka;Frankfurt Niemcy#TypB Boeing;AHDL109
+!Kapsztad SAfryka;Frankfurt Niemcy#TypB Boeing;AHDL10
 CD!Warszawa Polska;Split Chorwacja#TypA Airbus;AAA888
 CD!Londyn Anglia;Dublin Irlandia#TypA Airbus;SDF34T
 KONIEC

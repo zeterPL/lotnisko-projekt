@@ -327,7 +327,8 @@ public class Main {
 
                           System.out.println("------ Lista wszystkich dostępnych lotów: ------"); //zrobione
 
-                          for (int i = 0; i < loty.size(); i++) {
+
+                      for (int i = 0; i < loty.size(); i++) {
                               System.out.println(i + 1 + ". " + loty.get(i).toString());    // WYSTWIETLANIE AKTUALNYCH
                           }
                           System.out.println("------------------------------------------------");
@@ -461,6 +462,7 @@ public class Main {
                                   break;
                           }
                       } while(x!=3);
+                      break;
 
                   case 5:
                       int z=0;                                  //trasy
@@ -571,11 +573,19 @@ public class Main {
                                 System.out.println("-------------------------------------");
 
                                 int k=0;
+
+                                for(int i=0;i< loty.size();i++)
+                                {
+                                    System.out.println(i + 1 + ". " + loty.get(i).toString());
+                                }
+                                /*
                                 for (Lot lot : loty) {
 
                                     System.out.println(k + 1 + ". " + lot.toString());
                                     k++;
                                 }
+
+                                 */
                                 System.out.println("-------------------------------------");
                                 int f = scanner.nextInt(); //numer lotu
 
