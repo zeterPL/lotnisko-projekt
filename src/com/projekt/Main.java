@@ -704,7 +704,7 @@ public class Main {
 
 
                                 for (int i = 0; i < loty.get(nrlotu - 1).getKlienci().size(); i++) {
-                                    System.out.println(i + 1 + ". " + loty.get(nrlotu - 1).getKlienci().toString());
+                                    System.out.println(i + 1 + ". " + loty.get(nrlotu - 1).getKlienci().get(i).toString());
                                 }
                                 int nrklienta = scanner.nextInt(); //numer klienta z lotu(ale nie id)
 
@@ -713,9 +713,36 @@ public class Main {
                                     case "Ekonomiczna" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejsceEkonomiczna();
                                     case "Pierwsza" -> loty.get(nrlotu - 1).getSamolot().zwolnijMiejscePierwszaKl();
                                 }    //zwalnianie miejsca w odpowiedniej klasie
-                                loty.get(nrlotu - 1).getKlienci().remove(nrklienta - 1); //usuwanie klienta z lotu
+                                List<Rezerwacja> r = loty.get(nrlotu - 1).getKlient(nrklienta - 1).getRezerwacje();
+
+
+
+                                int bilet=0;
+
+                                for(int i=0;i<r.size();i++)
+                                {
+                                    bilet = r.get(i).getBilet().getId();
+                                }
+
+                                for(int i=0;i<bilety.size();i++)
+                                {
+                                    if(bilety.get(i).getId() == bilet)
+                                    {
+                                        bilety.remove(i);
+                                        for(int j=0;j<rezerwacje.size();j++)
+                                        {
+                                            if(rezerwacje.get(i).getBilet().getId()==bilet)
+                                            {
+                                                rezerwacje.remove(j);
+                                            }
+                                        }
+                                    }
+                                }
 
                                 loty.get(nrlotu - 1).getKlient(nrklienta - 1).deleteRezerwacja(); //usuwanie rezerwacji u klienta
+                                loty.get(nrlotu - 1).getKlienci().remove(nrklienta - 1); //usuwanie klienta z lotu
+
+/*
                                 for (int i = 0; i < bilety.size(); i++) {
                                     for (int j = 0; j < rezerwacje.size(); j++) {
                                         if (bilety.get(i).getId() == rezerwacje.get(j).getBilet().getId()) {
@@ -724,6 +751,8 @@ public class Main {
                                         }
                                     }
                                 }
+
+ */
                                 break;
                         }
 
